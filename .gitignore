@@ -1,5 +1,5 @@
+.vscode/
+.venv/
+cache/
 .*.swp
 tinbox/
-.vscode/
-cache/
-venv/

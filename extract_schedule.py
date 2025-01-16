@@ -12,7 +12,7 @@ CYBOZU_URL = "https://denshin.cybozu.com/o/ag.cgi"
 LOGIN_URL = "https://denshin.cybozu.com/login"
 USERNAME = "denshin"
 PASSWORD = "denshinJ1525"
-CHROME_DRIVER_PATH = "/home/user/my_schedule_app/venv/bin/chromedriver"  # ChromeDriverのパスを指定
+CHROME_DRIVER_PATH = ".venv/driver/chromedriver"
 
 # キャッシュディレクトリ
 CACHE_DIR = "./cache"

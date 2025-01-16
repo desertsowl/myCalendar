@@ -2,8 +2,15 @@ from flask import Flask, render_template, request
 import os
 from extract_schedule import fetch_schedule
 from bs4 import BeautifulSoup
+from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
 
 app = Flask(__name__)
+
+CHROME_DRIVER_PATH = ".venv/driver/chromedriver"
+service = Service(CHROME_DRIVER_PATH)
+driver = webdriver.Chrome(service=service)
+
 
 def parse_schedule(html):
     """
@@ -51,3 +58,4 @@ def index():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
