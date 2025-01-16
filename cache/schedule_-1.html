@@ -1,0 +1,706 @@
+<html lang="ja"><head>
+<title>スケジュール（グループ週表示） - サイボウズ Office</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<link rel="stylesheet" type="text/css" href="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/std.css?_v=10871ASP20241129182339.css">
+<link rel="stylesheet" type="text/css" href="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/yui/menu/assets/menu.css?_v=10871ASP20241129182339.css">
+<link rel="stylesheet" type="text/css" href="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/yui/container/assets/container.css?_v=10871ASP20241129182339.css">
+<link rel="stylesheet" type="text/css" href="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/dialog.css?_v=10871ASP20241129182339.css">
+<link rel="stylesheet" type="text/css" href="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/header.css?_v=10871ASP20241129182339.css">
+<link rel="stylesheet" id="designcss" type="text/css" href="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/std-varaha/std-varaha.css?_v=10871ASP20241129182339.css">
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/jquery/jquery.min.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/yui/utilities/utilities.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/std.js?_v=10871ASP20241129182339.js"></script>
+<script language="JavaScript" type="text/javascript"><!--
+CB7.Init( "ScheduleIndex", "ts.1736992147" );
+CB7.HTM_PATH = "https://static.cybozu.com/o/10.8.7_25.1_2616498/html";
+CB7.IMG_PATH = "https://static.cybozu.com/o/10.8.7_25.1_2616498/image";
+CB7.FORM_KEY = "d7c63e614995f4fda6447aacd4ec8ec6";
+CB7.PRODUCT_TITLE = "サイボウズ Office";
+CB7.LOGIN_ID = "215";
+CB7.BUILD_VERSION = "10871ASP20241129182339";
+g_strImgPath = "https://static.cybozu.com/o/10.8.7_25.1_2616498/image";
+g_bHeadbarFix = true;
+//--></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/dom.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/spinner.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/form.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/image.js?_v=10871ASP20241129182339.js"></script>
+<link href="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cybozuoffice.ico" rel="shortcut icon"> 
+<script type="text/javascript"><!--
+YAHOO.util.Event.on( document, "click", CB7.AutoHideMenu.HideAll );
+//--></script>
+<link rel="stylesheet" type="text/css" media="print" href="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/print.css?_v=10871ASP20241129182339.css">
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/tooltip.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/schedule.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/yui/container/container-min.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/dialog.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/calendar.js?_v=10871ASP20241129182339.js"></script>
+ <link rel="stylesheet" href="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/jquery/ui/jquery-ui.min.css?_v=10871ASP20241129182339.css">
+ <script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/jquery/ui/jquery-ui.min.js?_v=10871ASP20241129182339.js"></script>
+<link rel="stylesheet" type="text/css" href="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/dropdown.css?_v=10871ASP20241129182339.css">
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/dropdown.js?_v=10871ASP20241129182339.js"></script>
+<script>
+ window.onload = function(){
+ manageFixedView(0, -1);
+ };
+</script>
+</head>
+<body>
+<div id="headbar-wrapper" class="vr_headbarFix">
+ <header id="headbar" class="headbar">
+<h1 class="visuallyHidden">サイボウズ Office</h1>
+<a class="logo" href="ag.cgi?page=AGIndex"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/logo_hd.png" alt="トップページ"></a>
+<div class="headerProductList">
+<a class="vr_headerNotifireOffice vr_headerNotifireHere" href="/o/"><span class="visuallyHidden">サイボウズ Office</span></a></div>
+<form method="get" name="headbarSearchForm" action="ag.cgi?" style="display:inline;">
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/search.js?_v=10871ASP20241129182339.js"></script>
+ <input type="hidden" name="page" value="AGSimpleSearch">
+ <div class="headerSearch">
+ <input type="text" name="Text" class="headerSearchText" value="" maxlength="100" placeholder="製品内を検索">
+ <button type="submit" class="headerSearchButton"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/search16_mono.png" alt="検索"></button>
+ </div>
+ </form>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/yui/menu/menu-min.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/headermenu.js?_v=10871ASP20241129182339.js"></script>
+<script>CB7.HeaderMenu.Dialog.LINK_URL = "ag.cgi?page=AjaxXHRLinkDialog";</script>
+<div class="headerNavi">
+ <a id="header-menu-usersite" href="https://ofcom.cybozu.co.jp/?utm_source=product&amp;utm_medium=referral&amp;utm_campaign=product_top" target="_blank"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/comHeader_usersite.svg" alt="">ユーザー向けサイト</a>
+ <a id="header-menu-notification" href="ag.cgi?page=NotificationIndex">
+ <img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/comHeader_bell.svg" alt="通知一覧">
+ </a>
+<details id="header-menu-linklist">
+<summary><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/comHeader_link.svg" alt="">リンク</summary>
+<div class="headerSubMenuWrapper" data-mtime="ts.1492685060">
+ <div class="headerSubMenuInner">
+ <details class="headerSubMenu2ndLayer">
+ <summary><span><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/node16.png" align="absmiddle">始めるメニュー</span></summary>
+<div class="headerSubMenuWrapper">
+ <div class="headerSubMenuInner">
+<a href="ag.cgi?page=MyFolderMessageSend" target="_blank" rel="noopener noreferrer"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/msg16.png" align="absmiddle">メッセージを送る</a>
+<a href="ag.cgi?page=MyFolderMemoAdd" target="_blank" rel="noopener noreferrer"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/memo16.png" align="absmiddle">メモを書く</a>
+<a href="ag.cgi?page=ToDoEntry" target="_blank" rel="noopener noreferrer"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/todo16.png" align="absmiddle">ToDoを追加する</a>
+<div class="headerSubMenuSeparator"></div>
+<a href="ag.cgi?page=BulletinSend" target="_blank" rel="noopener noreferrer"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/bulletin16.png" align="absmiddle">掲示を書き込む</a>
+<a href="ag.cgi?page=AddressEntry" target="_blank" rel="noopener noreferrer"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/address16.png" align="absmiddle">アドレスを登録する</a>
+<a href="ag.cgi?page=ReportSend" target="_blank" rel="noopener noreferrer"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/report16.png" align="absmiddle">報告書を作成する</a>
+<div class="headerSubMenuSeparator"></div>
+<a href="ag.cgi?page=ScheduleEntry" target="_blank" rel="noopener noreferrer"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/schedule16.png" align="absmiddle">予定を登録する</a>
+<a href="ag.cgi?page=ScheduleAdjust" target="_blank" rel="noopener noreferrer"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/adjust16.png" align="absmiddle">予定を調整する</a>
+<div class="headerSubMenuSeparator"></div>
+ </div>
+</div>
+ </details>
+ </div>
+</div>
+</details>
+<details id="header-menu-user">
+ <summary><img class="profileImage" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/comHeader_defaulticon_small.png" alt=""><span>デンシン</span></summary>
+ <div class="headerSubMenuWrapper">
+ <div class="headerSubMenuInner">
+ <a href="/settings/profile" target="_blank">アカウント設定</a>
+ <div class="headerSubMenuSeparator"></div>
+ <a href="ag.cgi?page=PersonalAdminMenu" id="personalAdminMenu">個人設定</a>
+ <a href="ag.cgi?Page=PersonalDesign">デザインの変更</a>
+ <div class="headerSubMenuSeparator"></div>
+ <button type="button" class="vr_headerSignageCheckbox" onclick="CB7.Signage.Start();">全画面表示</button>
+ <div class="headerSubMenuSeparator"></div>
+<form method="post" id="topLogoutForm" name="topLogoutForm" action="ag.cgi?page=CloudLogin" style="display:inline;">
+<input type="hidden" name="csrf_ticket" value="d7c63e614995f4fda6447aacd4ec8ec6">
+<input type="hidden" name="_System" value="Login"><input type="hidden" name="_Logout" value="1"><input type="hidden" name="cloudlogout" value="1"><button type="submit">ログアウト</button></form>
+ </div>
+ </div>
+</details>
+<details id="header-menu-help">
+ <summary><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/comHeader_help.svg" alt="ヘルプ"></summary>
+ <div class="headerSubMenuWrapper">
+ <div class="headerSubMenuInner">
+ <a href="https://jp.cybozu.help/o/ja/user.html?utm_source=product&amp;utm_medium=help" target="_blank" rel="noopener noreferrer">ユーザーマニュアル</a>
+ <a href="https://faq.cybozu.info/alphascope/cybozu/web/office/?utm_source=product&amp;utm_medium=help" target="_blank" rel="noopener noreferrer">よくあるご質問</a>
+ <div class="headerSubMenuSeparator"></div>
+ <a href="https://cybozu-office.form.kintoneapp.com/public/b40b96d2cd1b5065dd48374f5b90ba20e352c91e6a2b90670b90830be7c526df" target="_blank" rel="noopener noreferrer">製品の改善に協力する</a>
+ </div>
+ </div>
+</details>
+</div>
+ </header>
+</div>
+<script>CB7.Signage.Init("ScheduleIndex");</script>
+<script>document.addEventListener("DOMContentLoaded", OnHashJump );</script>
+<div id="content-wrapper">
+<div class="vr_themeHeaderWrapper">
+<div class="vr_themeHeader" id="vr_themeHeader"><div class="vr_themeHeaderLink1"></div><div class="vr_themeHeaderLink2"></div><div class="vr_themeHeaderLink3"></div></div>
+<div class="vr_themeHeaderOuterDivider"></div>
+<div id="appIconMenuFrame" style="overflow-y:hidden;">
+<div class="vr_themeHeaderInnerDivider"></div>
+<div class="vr_naviAppMenu"><nav role="navigation"><ul class="naviAppMenuList">
+<li class="naviAppMenuListItem">
+<span class="appMenuItem"><a href="ag.cgi?page=AGIndex"><span class="appmenucss appMenuAGIndex"></span><br aria-hidden="true"><span class="vr_naviAppMenu">トップページ</span></a></span>
+</li>
+<li class="naviAppMenuListItem">
+<span class="appMenuItem"><a href="ag.cgi?page=MyFolderIndex"><span class="appmenucss appMenuMyFolderIndex"></span><br aria-hidden="true"><span class="vr_naviAppMenu">個人フォルダ</span></a></span>
+</li>
+<li class="naviAppMenuListItem">
+<span class="appMenuItem"><a href="ag.cgi?page=ScheduleIndex"><span class="appmenucss appMenuScheduleIndex"></span><br aria-hidden="true"><span class="vr_naviAppMenu">スケジュール</span></a></span>
+</li>
+<li class="naviAppMenuListItem">
+<span class="appMenuItem"><a href="ag.cgi?page=ScheduleIndex&amp;gid=fh"><span class="appmenucss appMenuScheduleFacility"></span><br aria-hidden="true"><span class="vr_naviAppMenu">施設予約</span></a></span>
+</li>
+<li class="naviAppMenuListItem">
+<span class="appMenuItem"><a href="ag.cgi?page=ToDoIndex"><span class="appmenucss appMenuToDoIndex"></span><br aria-hidden="true"><span class="vr_naviAppMenu">ToDoリスト</span></a></span>
+</li>
+<li class="naviAppMenuListItem">
+<span class="appMenuItem"><a href="ag.cgi?page=BulletinIndex"><span class="appmenucss appMenuBulletinIndex"></span><br aria-hidden="true"><span class="vr_naviAppMenu">掲示板</span></a></span>
+</li>
+<li class="naviAppMenuListItem">
+<span class="appMenuItem"><a href="ag.cgi?page=FileIndex"><span class="appmenucss appMenuFileIndex"></span><br aria-hidden="true"><span class="vr_naviAppMenu">ファイル管理</span></a></span>
+</li>
+<li class="naviAppMenuListItem">
+<span class="appMenuItem"><a href="ag.cgi?page=AddressIndex"><span class="appmenucss appMenuAddressIndex"></span><br aria-hidden="true"><span class="vr_naviAppMenu">アドレス帳</span></a></span>
+</li>
+<li class="naviAppMenuListItem">
+<span class="appMenuItem"><a href="ag.cgi?page=UserListIndex"><span class="appmenucss appMenuUserListIndex"></span><br aria-hidden="true"><span class="vr_naviAppMenu">ユーザー名簿</span></a></span>
+</li>
+<li class="naviAppMenuListItem">
+<span class="appMenuItem"><a href="https://office-users.cybozu.co.jp/?utm_source=product&amp;utm_medium=tools"><span class="appmenucss appMenuCybozuTools"></span><br aria-hidden="true"><span class="vr_naviAppMenu">CybozuTools!</span></a></span>
+</li>
+<li class="naviAppMenuListItem">
+<span class="appMenuItem"><a href="ag.cgi?page=ReportIndex"><span class="appmenucss appMenuReportIndex"></span><br aria-hidden="true"><span class="vr_naviAppMenu">報告書</span></a></span>
+</li>
+</ul></nav></div></div>
+</div>
+<div><div id="appmenuToggler" class="appmenuExpand"><div class="appmenuToggleButton"></div></div></div>
+
+<div class="pathbar">
+
+<a class="vr_pathTop" href="ag.cgi?page=AGIndex">トップページ</a><span class="vr_pathCurrent">&nbsp;</span><span>グループ週表示</span>
+</div>
+
+<div class="content">
+<div style="width:100%;">
+<h2 class="visuallyHidden">スケジュール（グループ週表示）</h2>
+<div class="menubar">
+<table class="layout" width="100%" role="presentation">
+<form method="get" name="search" action="ag.cgi?" style="display:inline;"></form>
+<input type="hidden" name="page" value="ScheduleSimpleSearch">
+<input type="hidden" name="CP" value="sg">
+<input type="hidden" name="uid" value="215">
+<input type="hidden" name="gid" value="186">
+<input type="hidden" name="date" value="da.2025.1.16">
+ <tbody><tr>
+ <td width="50%" nowrap="">
+<table class="layout" role="presentation">
+ <tbody><tr>
+ <td nowrap="">
+<span class="vr_vMenu">
+<span class="menubarTextLink"><a class="vr_hotButton" href="ag.cgi?page=ScheduleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;cp=sg"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/write16.png" align="absmiddle">予定を登録する</a></span>&nbsp;
+</span>
+ </td>
+ <td nowrap="">
+<button class="vr_stdButton" type="button" id="btnoptionSchedule" onclick="DisplayMenu(&quot;optionSchedule&quot;,&quot;groupSelect&quot;);"><nobr>その他の操作<img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/showdown12.png" align="absmiddle"></nobr></button>
+<br><div id="optionSchedule" class="submenu" style="display:none;">
+<div class="submenuitem"><nobr>
+<a id="" href="ag.cgi?page=ScheduleAdjust&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;cp=sg" onclick=""><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/adjust16.png" align="absmiddle">予定を調整する</a><br>
+</nobr></div>
+<div class="submenuitem" style="display: none;"><nobr>
+<a id="dateRowFixed" href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;Date=da.2025.1.16&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=" onclick="toggleDateRowViewSetting();"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/headerfixed_on16.png" align="absmiddle">日付を上下に固定する</a><br>
+</nobr></div>
+<div class="submenuitem" style="display: flex;"><nobr>
+<a id="dateRowUnfixed" href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;Date=da.2025.1.16&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=" onclick="toggleDateRowViewSetting();"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/headerfixed_on16.png" align="absmiddle">日付の固定を解除する</a><br>
+</nobr></div>
+<div class="submenuitem"><nobr>
+<a id="" href="ag.cgi?page=ScheduleReportExport&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;type=week&amp;cp=sg" onclick=""><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/view16.png" align="absmiddle">ファイルに書き出す（日報）</a><br>
+</nobr></div>
+<div class="submenuitem"><nobr>
+<a id="" href="ag.cgi?page=ScheduleIndexPrint&amp;UID=&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;cp=sg&amp;sEID=&amp;Text=&amp;Head=0" onclick=""><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/print16.png" align="absmiddle">印刷用画面</a><br>
+</nobr></div>
+<div class="hr">&nbsp;</div>
+<div class="submenuitem"><nobr>
+<a id="" href="ag.cgi?page=WhereIndex&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;SP=sg&amp;SavePath=1" onclick=""><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/telmemo16.png" align="absmiddle">電話メモ（在席確認）</a><br>
+</nobr></div>
+<div class="hr">&nbsp;</div>
+<div class="smallcorner">グループ</div>
+<div class="submenuitem"><nobr>
+<a id="" href="ag.cgi?page=ScheduleGroupDay&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;Head=0&amp;Text=" onclick=""><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle">グループ日表示</a><br>
+</nobr></div>
+<div class="submenuitem"><nobr>
+<a id="" href="ag.cgi?page=ScheduleIndex&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;Head=0&amp;Text=" onclick=""><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gweek16.png" align="absmiddle">グループ週表示</a><br>
+</nobr></div>
+<div class="hr">&nbsp;</div>
+<div class="smallcorner">個人</div>
+<div class="submenuitem"><nobr>
+<a id="" href="ag.cgi?page=ScheduleUserDay&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16" onclick=""><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_pday16.png" align="absmiddle">日表示</a><br>
+</nobr></div>
+<div class="submenuitem"><nobr>
+<a id="" href="ag.cgi?page=ScheduleUserWeek&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16" onclick=""><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_pweek16.png" align="absmiddle">週表示</a><br>
+</nobr></div>
+<div class="submenuitem"><nobr>
+<a id="" href="ag.cgi?page=ScheduleUserMonth&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16" onclick=""><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_pmon16.png" align="absmiddle">月表示</a><br>
+</nobr></div>
+<div class="submenuitem"><nobr>
+<a id="" href="ag.cgi?page=ScheduleUserYear&amp;Date=da.2025.1.16" onclick=""><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_pyear16.png" align="absmiddle">年表示</a><br>
+</nobr></div>
+<div class="hr">&nbsp;</div>
+<div class="submenuitem"><nobr><a onclick="DisplayMenu('optionSchedule','groupSelect'); return false;" href="javascript:void(0);"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/close16.png" align="absmiddle">閉じる</a></nobr></div>
+</div>
+ </td>
+ </tr>
+</tbody></table>
+ </td>
+ <td>&nbsp;</td>
+ <td width="50%" nowrap="">
+<script language="JavaScript" type="text/javascript"><!--
+function search_keydown(e)
+{
+ if( e.keyCode == 13 )
+ {
+ search_submit( 'user', 'ScheduleIndex' );
+ return false;
+ }
+ return true;
+}
+function search_submit(search_target, page)
+{
+ f = document.forms["search"];
+ f.target = '_self';
+ if( search_target == 'user' )
+ {
+ f.gid.value = "virtual";
+ f.CP.value = "";
+ f.action = "ag.cgi?";
+ if( ! OnSubmitSearch('search', page) ) return;
+ }
+ else
+ {
+ f.gid.value = "186";
+ f.CP.value = "sg";
+ if( ! OnSubmitSearch('search', 'ScheduleSimpleSearch') ) return;
+ }
+ f.submit();
+}
+//--></script>
+<img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/search16.png" align="absmiddle"><input type="text" size="20" value="" name="Text" maxlength="100" onkeypress="return search_keydown(event);"> <input class="vr_stdButton" type="button" value="ユーザー/施設検索" onclick="search_submit('user', 'ScheduleIndex'); return false;">
+<input class="vr_stdButton" type="button" value="スケジュール検索" onclick="search_submit('schedule', 'ScheduleIndex'); return false;">
+<font size="-1">
+<span class="menubarTextLink"><a class="" href="javascript:OnDetailSearch('search','ScheduleSearch')">詳細検索</a></span>&nbsp;
+</font>
+ </td>
+ </tr>
+ 
+</tbody></table>
+</div>
+<div class="tabsheet">
+<table class="tabsheetTable" border="0" cellspacing="0" cellpadding="0" role="presentation">
+ <tbody><tr style="cursor:default">
+<td class="tabOffCenter" nowrap="">
+ <a href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Text=&amp;Date=da.2025.1.16&amp;Head=0" style="text-decoration:none; color:#000000"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle">グループ日</a>
+</td><td class="tabCenter" nowrap="">
+<img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gweek16.png" align="absmiddle">グループ週
+</td><td class="tabOffCenter" nowrap="">
+ <a href="ag.cgi?page=ScheduleUserDay&amp;GID=186&amp;UID=215&amp;Date=da.2025.1.16" style="text-decoration:none; color:#000000"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_pday16.png" align="absmiddle">個人日</a>
+</td><td class="tabOffCenter" nowrap="">
+ <a href="ag.cgi?page=ScheduleUserWeek&amp;GID=186&amp;UID=215&amp;Date=da.2025.1.16" style="text-decoration:none; color:#000000"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_pweek16.png" align="absmiddle">個人週</a>
+</td><td class="tabOffCenter" nowrap="">
+ <a href="ag.cgi?page=ScheduleUserMonth&amp;GID=186&amp;UID=215&amp;Date=da.2025.1.16" style="text-decoration:none; color:#000000"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_pmon16.png" align="absmiddle">個人月</a>
+</td><td class="tabOffCenter" nowrap="">
+ <a href="ag.cgi?page=ScheduleUserYear&amp;GID=186&amp;UID=215&amp;Date=da.2025.1.16" style="text-decoration:none; color:#000000"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_pyear16.png" align="absmiddle">個人年</a>
+</td> </tr>
+</tbody></table>
+</div>
+<div class="contentTab">
+<table class="vr_contentArea" width="100%" role="presentation"><tbody><tr><td class="vr_contentAreaTd">
+<table class="multicol" width="100%" role="presentation">
+ <tbody><tr valign="top">
+ <td class="viewColumn" width="100%">
+ <div class="vr_viewColumn"><!-- for ie margin -->
+ <div class="vr_mainColumn">
+<div id="scheduleindex">
+ <div id="redraw">
+<table class="schedule groupweek js-fixed-header-helper fixed-schedule-header dh datehead" id="dateheaderfixed" width="100%" data-cybozu-dbheader-index-0="0" style="display: none; position: fixed; table-layout: fixed; top: 27px; width: 745.938px; left: 25px;">
+<tbody><tr class="datehead">
+<td colspan="8">
+<form method="get" name="ScheduleIndex" action="ag.cgi?" style="display:inline;">
+<input type="hidden" name="page" value="ScheduleIndex">
+<input type="hidden" name="CP" value="">
+<input type="hidden" name="SP" value="">
+<input type="hidden" name="Date" value="da.2025.1.16">
+<input type="hidden" name="BDate" value="da.2025.1.16">
+<input type="hidden" name="BKUID" value="">
+<input type="hidden" name="BKGID" value="">
+ <div class="dateheadInner">
+ <div class="selectCell">グループ<select id="groupSelectFixed" name="GID" onchange="CB7.AutoSelect(this,'GID');" class="select-gid">
+<option value="186">デンシン</option>
+<option value="186">--</option>
+<option value="0">(全員)</option>
+<option value="f">(全施設)</option>
+<option value="186">--</option>
+<option value="186">デンシン</option>
+<option value="212">その他</option>
+<option value="186">--</option>
+<option value="f">(全施設)</option>
+</select>
+ </div>
+ <div class="dateCell" align="center">&nbsp;<h3 class="dateheadInnerDateCellText">2025 年 1 月 16 日 (木)</h3>&nbsp;</div>
+ <div class="printTitleCell"><b>2025 年 1 月 16 日 （木）  デンシン の週予定</b></div>
+ <div>
+<button class="scheduleMove vr_portletButton" type="button" onclick="moveToNextPage('ag.cgi?page=ScheduleIndex&amp;GID=186&amp;Date=da.2025.1.12&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=');"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_back_double12.png" align="absmiddle">前週</button>
+<button class="scheduleMove vr_portletButton" type="button" onclick="moveToNextPage('ag.cgi?page=ScheduleIndex&amp;GID=186&amp;Date=da.2025.1.15&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=');"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_back_single12.png" align="absmiddle">前日</button>
+<button class="scheduleMove vr_portletButton" type="button" onclick="moveToNextPage('ag.cgi?page=ScheduleIndex&amp;GID=186&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=');">今日</button>
+<button class="scheduleMove vr_portletButton" type="button" onclick="moveToNextPage('ag.cgi?page=ScheduleIndex&amp;GID=186&amp;Date=da.2025.1.17&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=');">翌日<img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_next_single12.png" align="absmiddle"></button>
+<button class="scheduleMove vr_portletButton" type="button" onclick="moveToNextPage('ag.cgi?page=ScheduleIndex&amp;GID=186&amp;Date=da.2025.1.19&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=');">翌週<img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_next_double12.png" align="absmiddle"></button>
+ </div>
+ </div>
+ </form>
+ </td>
+</tr>
+</tbody></table>
+<table class="schedule groupweek js-fixed-header-helper fixed-schedule-header fh weekhead" id="weekheaderfixed" data-cybozu-dbheader-index-1="0" style="display: none; position: fixed; table-layout: fixed; top: 64px; width: 745.938px; left: 25px;">
+<tbody>
+<tr class="weekhead">
+<td align="center" class="headernavi" nowrap="" style="width: 40px;">
+<div class="firstcellbuttons-wrapper" style="display: none;">
+<a name="weekhead-215"></a>
+<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;Date=da.2025.1.12&amp;dummy=1#weekhead-215" title="前週"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_lj30x20.png" align="absmiddle"></a>&nbsp;<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;dummy=1#weekhead-215" title="今日"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/today30x20.png" align="absmiddle"></a>&nbsp;<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;Date=da.2025.1.19&amp;dummy=1#weekhead-215" title="翌週"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_rj30x20.png" align="absmiddle"></a>&nbsp;</div>
+</td>
+<td align="center" class="weekday" nowrap="" style="width: 102.125px;"><span class="today">16（木）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示"></a></td>
+<td align="center" class="weekday" nowrap="" style="width: 102.125px;"><span class="">17（金）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示"></a></td>
+<td align="center" class="saturday" nowrap="" style="width: 77.1562px;"><span class="">18（土）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.18&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示"></a></td>
+<td align="center" class="sunday" nowrap="" style="width: 77.1562px;"><span class="">19（日）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.19&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示"></a></td>
+<td align="center" class="weekday" nowrap="" style="width: 102.125px;"><span class="">20（月）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示"></a></td>
+<td align="center" class="weekday" nowrap="" style="width: 102.125px;"><span class="">21（火）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示"></a></td>
+<td align="center" class="weekday" nowrap="" style="width: 102.125px;"><span class="">22（水）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示"></a></td>
+</tr>
+</tbody>
+</table>
+<table class="schedule groupweek js-fixed-footer-helper fixed-schedule-footer weekfoot" id="weekfooterfixed" data-cybozu-dbfooter-index-1="0" style="display: table; position: fixed; table-layout: fixed; bottom: 0px; width: 745.938px; left: 25px;">
+<tbody>
+<tr class="weekfoot">
+<td align="center" class="footernavi" nowrap="" style="width: 40px;">
+<div class="firstcellbuttons-wrapper" style="display: none;">
+<a name="weekfoot-"></a>
+<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;Date=da.2025.1.12&amp;dummy=1#weekfoot-" title="前週"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_lj30x20.png" align="absmiddle"></a>&nbsp;<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;dummy=1#weekfoot-" title="今日"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/today30x20.png" align="absmiddle"></a>&nbsp;<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;Date=da.2025.1.19&amp;dummy=1#weekfoot-" title="翌週"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_rj30x20.png" align="absmiddle"></a>&nbsp;</div>
+</td>
+<td align="center" class="weekday" nowrap="" style="width: 102.125px;"><span class="today">16（木）</span></td>
+<td align="center" class="weekday" nowrap="" style="width: 102.125px;"><span class="">17（金）</span></td>
+<td align="center" class="saturday" nowrap="" style="width: 77.1562px;"><span class="">18（土）</span></td>
+<td align="center" class="sunday" nowrap="" style="width: 77.1562px;"><span class="">19（日）</span></td>
+<td align="center" class="weekday" nowrap="" style="width: 102.125px;"><span class="">20（月）</span></td>
+<td align="center" class="weekday" nowrap="" style="width: 102.125px;"><span class="">21（火）</span></td>
+<td align="center" class="weekday" nowrap="" style="width: 102.125px;"><span class="">22（水）</span></td>
+</tr>
+</tbody>
+
+</table>
+<table class="schedule groupweek canDnD" id="tblgroupweek" width="100%">
+ <colgroup><col width="14%">
+ <col width="12%">
+ <col width="12%">
+ <col width="12%">
+ <col width="12%">
+ <col width="12%">
+ <col width="12%">
+ <col width="12%">
+</colgroup><tbody><tr class="datehead" id="dateheader">
+<td colspan="8">
+<form method="get" name="ScheduleIndex" action="ag.cgi?" style="display:inline;">
+<input type="hidden" name="page" value="ScheduleIndex">
+<input type="hidden" name="CP" value="">
+<input type="hidden" name="SP" value="">
+<input type="hidden" name="Date" value="da.2025.1.16">
+<input type="hidden" name="BDate" value="da.2025.1.16">
+<input type="hidden" name="BKUID" value="">
+<input type="hidden" name="BKGID" value="">
+ <div class="dateheadInner">
+ <div class="selectCell">グループ<select id="groupSelect" name="GID" onchange="CB7.AutoSelect(this,'GID');" class="select-gid">
+<option value="186">デンシン</option>
+<option value="186">--</option>
+<option value="0">(全員)</option>
+<option value="f">(全施設)</option>
+<option value="186">--</option>
+<option value="186">デンシン</option>
+<option value="212">その他</option>
+<option value="186">--</option>
+<option value="f">(全施設)</option>
+</select>
+ </div>
+ <div class="dateCell" align="center">&nbsp;<h3 class="dateheadInnerDateCellText">2025 年 1 月 16 日 (木)</h3>&nbsp;</div>
+ <div class="printTitleCell"><b>2025 年 1 月 16 日 （木）  デンシン の週予定</b></div>
+ <div class="naviCell">
+<button class="scheduleMove vr_portletButton" type="button" onclick="moveToNextPage('ag.cgi?page=ScheduleIndex&amp;GID=186&amp;Date=da.2025.1.12&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=');"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_back_double12.png" align="absmiddle" draggable="false">前週</button>
+<button class="scheduleMove vr_portletButton" type="button" onclick="moveToNextPage('ag.cgi?page=ScheduleIndex&amp;GID=186&amp;Date=da.2025.1.15&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=');"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_back_single12.png" align="absmiddle" draggable="false">前日</button>
+<button class="scheduleMove vr_portletButton" type="button" onclick="moveToNextPage('ag.cgi?page=ScheduleIndex&amp;GID=186&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=');">今日</button>
+<button class="scheduleMove vr_portletButton" type="button" onclick="moveToNextPage('ag.cgi?page=ScheduleIndex&amp;GID=186&amp;Date=da.2025.1.17&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=');">翌日<img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_next_single12.png" align="absmiddle" draggable="false"></button>
+<button class="scheduleMove vr_portletButton" type="button" onclick="moveToNextPage('ag.cgi?page=ScheduleIndex&amp;GID=186&amp;Date=da.2025.1.19&amp;cp=&amp;sp=&amp;BDate=da.2025.1.16&amp;BKGID=&amp;sEID=&amp;Head=0&amp;Text=');">翌週<img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_next_double12.png" align="absmiddle" draggable="false"></button>
+ </div>
+ </div>
+ </form>
+ </td>
+</tr>
+<tr class="weekhead" id="weekheader-1">
+<td align="center" class="headernavi" nowrap="">
+<div class="firstcellbuttons-wrapper" style="display: none;">
+<a name="weekhead-215" draggable="false"></a>
+<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;Date=da.2025.1.12&amp;dummy=1#weekhead-215" title="前週" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_lj30x20.png" align="absmiddle" draggable="false"></a>&nbsp;<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;dummy=1#weekhead-215" title="今日" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/today30x20.png" align="absmiddle" draggable="false"></a>&nbsp;<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;Date=da.2025.1.19&amp;dummy=1#weekhead-215" title="翌週" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_rj30x20.png" align="absmiddle" draggable="false"></a>&nbsp;</div>
+</td>
+<th scope="col" align="center" class="weekday" nowrap=""><span class="today">16（木）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示" draggable="false"></a></th>
+<th scope="col" align="center" class="weekday" nowrap=""><span class="">17（金）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示" draggable="false"></a></th>
+<th scope="col" align="center" class="saturday" nowrap=""><span class="">18（土）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.18&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示" draggable="false"></a></th>
+<th scope="col" align="center" class="sunday" nowrap=""><span class="">19（日）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.19&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示" draggable="false"></a></th>
+<th scope="col" align="center" class="weekday" nowrap=""><span class="">20（月）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示" draggable="false"></a></th>
+<th scope="col" align="center" class="weekday" nowrap=""><span class="">21（火）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示" draggable="false"></a></th>
+<th scope="col" align="center" class="weekday" nowrap=""><span class="">22（水）</span><a id="" href="ag.cgi?page=ScheduleGroupDay&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;SP=&amp;Head=0&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_gday16.png" align="absmiddle" alt="日表示" title="日表示" draggable="false"></a></th>
+</tr>
+<tr class="eventrow" valign="top" style="height:3em">
+<th class="usercell">
+<div class="scheduleFirstCellItem">
+<div class="userNameImageLarge userNameAlignTop">
+<img class="profileImage" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/loginuser32.png" style="width: 32px; height: 32px;" align="absmiddle" alt="" draggable="false"><a href="ag.cgi?page=UserListView&amp;UID=215&amp;GID=186&amp;sEID=&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;SP=sg&amp;SavePath=1" draggable="false">デンシン</a></div>
+<div class="linkusermonth">
+<a class="" href="ag.cgi?page=ScheduleUserMonth&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;CP=sg&amp;SP=" alt="月予定" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/cal_pmon16.png" align="absmiddle" draggable="false">月予定</a>&nbsp;
+</div>
+<br></div></th>
+<td class="eventcell" onclick="CB7.Schedule.EventCell.OnClick(this,event);" onmouseover="CB7.Schedule.EventCell.OnMouseOver(this,event);" onmouseout="CB7.Schedule.EventCell.OnMouseOut(this,event);">
+<div class="dropArea" data-cb-date="da.2025.1.16" data-cb-uid="215">
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.16" data-cb-uid="215" data-cb-st="dt.2025.1.16.-1.-1.-1" data-cb-et="dt.2025.1.16.-1.-1.-1" data-cb-eid="112602" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem4 highlight-event112602" name="event112602"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;sEID=112602&amp;CP=sg" title="休み:早川　有給休暇" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu4">休み</span>早川　有給休暇</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.16" data-cb-uid="215" data-cb-st="dt.2025.1.16.-1.-1.-1" data-cb-et="dt.2025.1.16.-1.-1.-1" data-cb-eid="117868" draggable="true">
+</div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.16" data-cb-uid="215" data-cb-st="dt.2025.1.16.-1.-1.-1" data-cb-et="dt.2025.1.16.-1.-1.-1" data-cb-eid="117025" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem4 highlight-event117025" name="event117025"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;sEID=117025&amp;CP=sg" title="休み:筧　有給休暇" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu4">休み</span>筧　有給休暇</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.16" data-cb-uid="215" data-cb-st="dt.2025.1.16.-1.-1.-1" data-cb-et="dt.2025.1.16.-1.-1.-1" data-cb-eid="118352" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem4 highlight-event118352" name="event118352"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;sEID=118352&amp;CP=sg" title="休み:安田　緒方　山口　" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu4">休み</span>安田　緒方　山口　</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.16" data-cb-uid="215" data-cb-st="dt.2025.1.16.-1.-1.-1" data-cb-et="dt.2025.1.16.-1.-1.-1" data-cb-eid="118170" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem0 highlight-event118170" name="event118170"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;sEID=118170&amp;CP=sg" title="本社 　松本　黒田" draggable="false"><span style="white-space:nowrap;"></span>本社 　松本　黒田</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.16" data-cb-uid="215" data-cb-st="dt.2025.1.16.-1.-1.-1" data-cb-et="dt.2025.1.16.-1.-1.-1" data-cb-eid="118380" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem4 highlight-event118380" name="event118380"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;sEID=118380&amp;CP=sg" title="休み:伊藤" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu4">休み</span>伊藤</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.16" data-cb-uid="215" data-cb-st="dt.2025.1.16.-1.-1.-1" data-cb-et="dt.2025.1.16.-1.-1.-1" data-cb-eid="117444" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem0 highlight-event117444" name="event117444"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;sEID=117444&amp;CP=sg" title="菊川事業所　百瀬　応　保田　坂之下　原田　菊池　横山　オルビル　ドミニク　グライ　エファ　アンジェロ" draggable="false"><span style="white-space:nowrap;"></span>菊川事業所　百瀬　応　保田　坂之下　原田　菊池　横山　オルビル　ドミニク　グライ　エファ　アンジェロ</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.16" data-cb-uid="215" data-cb-st="dt.2025.1.16.9.0.0" data-cb-et="dt.2025.1.16.17.30.0" data-cb-eid="117796" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem8 highlight-event117796" name="event117796"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">9:00-17:30&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;sEID=117796&amp;CP=sg" title="作業:FS　au or サブコン　小澤" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu8">作業</span>FS　au or サブコン　小澤</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.16" data-cb-uid="215" data-cb-st="dt.2025.1.16.9.0.0" data-cb-et="dt.2025.1.16.18.0.0" data-cb-eid="117408" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem3 highlight-event117408" name="event117408"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">9:00-18:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;sEID=117408&amp;CP=sg" title="キッティング:リコー　日本車両PCキッティング作業　600台" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu3">キッティング</span>リコー　日本車両PCキッティング作業　600台</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.16" data-cb-uid="215" data-cb-st="dt.2025.1.16.10.0.0" data-cb-et="dt.2025.1.16.18.0.0" data-cb-eid="118376" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem9 highlight-event118376" name="event118376"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">10:00-18:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;sEID=118376&amp;CP=sg" title="その他:HISYS 来社対応　百瀬" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu9">その他</span>HISYS 来社対応　百瀬</a></span></div></div></div>
+<div class="schedEntry">
+<span class="entry"><a id="" href="ag.cgi?page=ScheduleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/write16.png" align="absmiddle" alt="予定の登録" title="予定の登録" draggable="false"></a></span><span class="entry"><a id="" href="javascript:void(0);" onclick="CB7.Schedule.SimpleEntry.startEntry(this, 'ag.cgi?page=AjaxXHRScheduleSimpleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;CP=sg&amp;elementId=scheduleindex')" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/simpleWrite16.png" align="absmiddle" alt="予定の簡易登録" title="予定の簡易登録" draggable="false"></a></span></div>
+</div></td>
+<td class="eventcell" onclick="CB7.Schedule.EventCell.OnClick(this,event);" onmouseover="CB7.Schedule.EventCell.OnMouseOver(this,event);" onmouseout="CB7.Schedule.EventCell.OnMouseOut(this,event);">
+<div class="dropArea" data-cb-date="da.2025.1.17" data-cb-uid="215">
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.17" data-cb-uid="215" data-cb-st="dt.2025.1.17.-1.-1.-1" data-cb-et="dt.2025.1.17.-1.-1.-1" data-cb-eid="114620" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem4 highlight-event114620" name="event114620"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;sEID=114620&amp;CP=sg" title="休み:早川　有給休暇" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu4">休み</span>早川　有給休暇</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.17" data-cb-uid="215" data-cb-st="dt.2025.1.17.-1.-1.-1" data-cb-et="dt.2025.1.17.-1.-1.-1" data-cb-eid="117448" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem0 highlight-event117448" name="event117448"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;sEID=117448&amp;CP=sg" title="菊川事業所　筧　百瀬　応　伊藤　保田　坂之下　横山　菊池　原田　オルビル　ドミニク　グライ　エファ　アンジェロ" draggable="false"><span style="white-space:nowrap;"></span>菊川事業所　筧　百瀬　応　伊藤　保田　坂之下　横山　菊池　原田　オルビル　ドミニク　グライ　エファ　アンジェロ</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.17" data-cb-uid="215" data-cb-st="dt.2025.1.17.-1.-1.-1" data-cb-et="dt.2025.1.17.-1.-1.-1" data-cb-eid="118174" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem0 highlight-event118174" name="event118174"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;sEID=118174&amp;CP=sg" title="本社 　松本　安田　緒方　山口" draggable="false"><span style="white-space:nowrap;"></span>本社 　松本　安田　緒方　山口</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.17" data-cb-uid="215" data-cb-st="dt.2025.1.17.-1.-1.-1" data-cb-et="dt.2025.1.17.-1.-1.-1" data-cb-eid="118372" draggable="true">
+</div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.17" data-cb-uid="215" data-cb-st="dt.2025.1.17.-1.-1.-1" data-cb-et="dt.2025.1.17.-1.-1.-1" data-cb-eid="118388" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem4 highlight-event118388" name="event118388"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;sEID=118388&amp;CP=sg" title="休み:菊池　有給休暇" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu4">休み</span>菊池　有給休暇</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.17" data-cb-uid="215" data-cb-st="dt.2025.1.17.9.0.0" data-cb-et="dt.2025.1.17.17.30.0" data-cb-eid="118368" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem8 highlight-event118368" name="event118368"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">9:00-17:30&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;sEID=118368&amp;CP=sg" title="作業:FS　au or サブコン　小澤" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu8">作業</span>FS　au or サブコン　小澤</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.17" data-cb-uid="215" data-cb-st="dt.2025.1.17.9.0.0" data-cb-et="dt.2025.1.17.18.0.0" data-cb-eid="117412" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem3 highlight-event117412" name="event117412"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">9:00-18:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;sEID=117412&amp;CP=sg" title="キッティング:リコー　日本車両PCキッティング作業　600台" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu3">キッティング</span>リコー　日本車両PCキッティング作業　600台</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.17" data-cb-uid="215" data-cb-st="dt.2025.1.17.9.0.0" data-cb-et="dt.2025.1.17.18.0.0" data-cb-eid="118304" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem18 highlight-event118304" name="event118304"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">9:00-18:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;sEID=118304&amp;CP=sg" title="工事＿東京:WT 国立成育研究センター　三輪　ドミニク" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu18">工事＿東京</span>WT 国立成育研究センター　三輪　ドミニク</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.17" data-cb-uid="215" data-cb-st="dt.2025.1.17.10.0.0" data-cb-et="dt.2025.1.17.12.0.0" data-cb-eid="118178" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem9 highlight-event118178" name="event118178"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">10:00-12:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;sEID=118178&amp;CP=sg" title="その他:リコー　日本車輛　端末納品181台　社長・黒田" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu9">その他</span>リコー　日本車輛　端末納品181台　社長・黒田</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.17" data-cb-uid="215" data-cb-st="dt.2025.1.17.13.0.0" data-cb-et="dt.2025.1.17.14.0.0" data-cb-eid="115929" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem6 highlight-event115929" name="event115929"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">13:00-14:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;sEID=115929&amp;CP=sg" title="打合せ:ルックアップ案件　全国連合会　WEB定例会　百瀬" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu6">打合せ</span>ルックアップ案件　全国連合会　WEB定例会　百瀬</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.17" data-cb-uid="215" data-cb-st="dt.2025.1.17.16.0.0" data-cb-et="dt.2025.1.17.17.30.0" data-cb-eid="116831" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem9 highlight-event116831" name="event116831"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">16:00-17:30&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;sEID=116831&amp;CP=sg" title="その他:KS 安全衛生大会（web）" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu9">その他</span>KS 安全衛生大会（web）</a></span></div></div></div>
+<div class="schedEntry">
+<span class="entry"><a id="" href="ag.cgi?page=ScheduleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/write16.png" align="absmiddle" alt="予定の登録" title="予定の登録" draggable="false"></a></span><span class="entry"><a id="" href="javascript:void(0);" onclick="CB7.Schedule.SimpleEntry.startEntry(this, 'ag.cgi?page=AjaxXHRScheduleSimpleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;CP=sg&amp;elementId=scheduleindex')" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/simpleWrite16.png" align="absmiddle" alt="予定の簡易登録" title="予定の簡易登録" draggable="false"></a></span></div>
+</div></td>
+<td class="eventcell" onclick="CB7.Schedule.EventCell.OnClick(this,event);" onmouseover="CB7.Schedule.EventCell.OnMouseOver(this,event);" onmouseout="CB7.Schedule.EventCell.OnMouseOut(this,event);">
+<div class="dropArea" data-cb-date="da.2025.1.18" data-cb-uid="215">
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.18" data-cb-uid="215" data-cb-st="dt.2025.1.18.-1.-1.-1" data-cb-et="dt.2025.1.18.-1.-1.-1" data-cb-eid="118134" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem18 highlight-event118134" name="event118134"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.18&amp;BDate=da.2025.1.16&amp;sEID=118134&amp;CP=sg" title="工事＿東京:渋谷ソラタ　顔認証機器設置予定" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu18">工事＿東京</span>渋谷ソラタ　顔認証機器設置予定</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.18" data-cb-uid="215" data-cb-st="dt.2025.1.18.-1.-1.-1" data-cb-et="dt.2025.1.18.-1.-1.-1" data-cb-eid="115308" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem1 highlight-event115308" name="event115308"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.18&amp;BDate=da.2025.1.16&amp;sEID=115308&amp;CP=sg" title="工事＿本社:KS　JR三島研修センター　AP撤去　安田　緒方　山口　青井" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu1">工事＿本社</span>KS　JR三島研修センター　AP撤去　安田　緒方　山口　青井</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.18" data-cb-uid="215" data-cb-st="dt.2025.1.18.-1.-1.-1" data-cb-et="dt.2025.1.18.-1.-1.-1" data-cb-eid="118364" draggable="true">
+</div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.18" data-cb-uid="215" data-cb-st="dt.2025.1.18.8.0.0" data-cb-et="dt.2025.1.18.-1.-1.-1" data-cb-eid="117719" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem1 highlight-event117719" name="event117719"><div class="eventInner"><span class="eventDateTime">8:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.18&amp;BDate=da.2025.1.16&amp;sEID=117719&amp;CP=sg" title="工事＿本社:サーバー移設　松本　黒田　小澤　岡本" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu1">工事＿本社</span>サーバー移設　松本　黒田　小澤　岡本</a></span></div></div></div>
+<div class="schedEntry">
+<span class="entry"><a id="" href="ag.cgi?page=ScheduleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.18&amp;BDate=da.2025.1.16&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/write16.png" align="absmiddle" alt="予定の登録" title="予定の登録" draggable="false"></a></span><span class="entry"><a id="" href="javascript:void(0);" onclick="CB7.Schedule.SimpleEntry.startEntry(this, 'ag.cgi?page=AjaxXHRScheduleSimpleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.18&amp;BDate=da.2025.1.16&amp;CP=sg&amp;elementId=scheduleindex')" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/simpleWrite16.png" align="absmiddle" alt="予定の簡易登録" title="予定の簡易登録" draggable="false"></a></span></div>
+</div></td>
+<td class="eventcell" onclick="CB7.Schedule.EventCell.OnClick(this,event);" onmouseover="CB7.Schedule.EventCell.OnMouseOver(this,event);" onmouseout="CB7.Schedule.EventCell.OnMouseOut(this,event);">
+<div class="dropArea" data-cb-date="da.2025.1.19" data-cb-uid="215">
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.19" data-cb-uid="215" data-cb-st="dt.2025.1.19.-1.-1.-1" data-cb-et="dt.2025.1.19.-1.-1.-1" data-cb-eid="118138" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem18 highlight-event118138" name="event118138"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.19&amp;BDate=da.2025.1.16&amp;sEID=118138&amp;CP=sg" title="工事＿東京:渋谷ソラタ　顔認証機器設置予定" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu18">工事＿東京</span>渋谷ソラタ　顔認証機器設置予定</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.19" data-cb-uid="215" data-cb-st="dt.2025.1.19.-1.-1.-1" data-cb-et="dt.2025.1.19.-1.-1.-1" data-cb-eid="115312" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem1 highlight-event115312" name="event115312"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.19&amp;BDate=da.2025.1.16&amp;sEID=115312&amp;CP=sg" title="工事＿本社:KS　JR三島研修センター　AP撤去　安田　緒方　山口　青井" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu1">工事＿本社</span>KS　JR三島研修センター　AP撤去　安田　緒方　山口　青井</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.19" data-cb-uid="215" data-cb-st="dt.2025.1.19.-1.-1.-1" data-cb-et="dt.2025.1.19.-1.-1.-1" data-cb-eid="118320" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem18 highlight-event118320" name="event118320"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.19&amp;BDate=da.2025.1.16&amp;sEID=118320&amp;CP=sg" title="工事＿東京:WT 静岡県沼津　瀬尾記念病院　LAN工事 大雅×３" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu18">工事＿東京</span>WT 静岡県沼津　瀬尾記念病院　LAN工事 大雅×３</a></span></div></div></div>
+<div class="schedEntry">
+<span class="entry"><a id="" href="ag.cgi?page=ScheduleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.19&amp;BDate=da.2025.1.16&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/write16.png" align="absmiddle" alt="予定の登録" title="予定の登録" draggable="false"></a></span><span class="entry"><a id="" href="javascript:void(0);" onclick="CB7.Schedule.SimpleEntry.startEntry(this, 'ag.cgi?page=AjaxXHRScheduleSimpleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.19&amp;BDate=da.2025.1.16&amp;CP=sg&amp;elementId=scheduleindex')" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/simpleWrite16.png" align="absmiddle" alt="予定の簡易登録" title="予定の簡易登録" draggable="false"></a></span></div>
+</div></td>
+<td class="eventcell" onclick="CB7.Schedule.EventCell.OnClick(this,event);" onmouseover="CB7.Schedule.EventCell.OnMouseOver(this,event);" onmouseout="CB7.Schedule.EventCell.OnMouseOut(this,event);">
+<div class="dropArea" data-cb-date="da.2025.1.20" data-cb-uid="215">
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.20" data-cb-uid="215" data-cb-st="dt.2025.1.20.-1.-1.-1" data-cb-et="dt.2025.1.20.-1.-1.-1" data-cb-eid="118009" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem4 highlight-event118009" name="event118009"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;sEID=118009&amp;CP=sg" title="休み:18日代休　小澤" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu4">休み</span>18日代休　小澤</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.20" data-cb-uid="215" data-cb-st="dt.2025.1.20.-1.-1.-1" data-cb-et="dt.2025.1.20.-1.-1.-1" data-cb-eid="118017" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem4 highlight-event118017" name="event118017"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;sEID=118017&amp;CP=sg" title="休み:黒田　18日の代休" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu4">休み</span>黒田　18日の代休</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.20" data-cb-uid="215" data-cb-st="dt.2025.1.20.-1.-1.-1" data-cb-et="dt.2025.1.20.-1.-1.-1" data-cb-eid="116264" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem1 highlight-event116264" name="event116264"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;sEID=116264&amp;CP=sg" title="工事＿本社:KS 東レ三島研修センター　山口　三輪　大雅×４" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu1">工事＿本社</span>KS 東レ三島研修センター　山口　三輪　大雅×４</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.20" data-cb-uid="215" data-cb-st="dt.2025.1.20.-1.-1.-1" data-cb-et="dt.2025.1.20.-1.-1.-1" data-cb-eid="118199" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem1 highlight-event118199" name="event118199"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;sEID=118199&amp;CP=sg" title="工事＿本社:KS　ホンダモビリティーランド　安田　緒方　青井　松村" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu1">工事＿本社</span>KS　ホンダモビリティーランド　安田　緒方　青井　松村</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.20" data-cb-uid="215" data-cb-st="dt.2025.1.20.-1.-1.-1" data-cb-et="dt.2025.1.20.-1.-1.-1" data-cb-eid="117452" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem0 highlight-event117452" name="event117452"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;sEID=117452&amp;CP=sg" title="菊川事業所　筧　百瀬　応　　保田　植松　オルビル　ドミニク　グライ　エファ　アンジェロ" draggable="false"><span style="white-space:nowrap;"></span>菊川事業所　筧　百瀬　応　　保田　植松　オルビル　ドミニク　グライ　エファ　アンジェロ</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.20" data-cb-uid="215" data-cb-st="dt.2025.1.20.9.0.0" data-cb-et="dt.2025.1.20.11.0.0" data-cb-eid="116997" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem9 highlight-event116997" name="event116997"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">9:00-11:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;sEID=116997&amp;CP=sg" title="その他:オルビル　健康診断" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu9">その他</span>オルビル　健康診断</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.20" data-cb-uid="215" data-cb-st="dt.2025.1.20.10.0.0" data-cb-et="dt.2025.1.20.18.0.0" data-cb-eid="117944" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem8 highlight-event117944" name="event117944"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">10:00-18:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;sEID=117944&amp;CP=sg" title="作業:ZOZOマリンスタジアム POS入替作業 5名 伊藤　横山　菊池　原田　坂之下" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu8">作業</span>ZOZOマリンスタジアム POS入替作業 5名 伊藤　横山　菊池　原田　坂之下</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.20" data-cb-uid="215" data-cb-st="dt.2025.1.20.14.0.0" data-cb-et="dt.2025.1.20.15.0.0" data-cb-eid="118021" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem6 highlight-event118021" name="event118021"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">14:00-15:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;sEID=118021&amp;CP=sg" title="打合せ:ITX来社(PM) 　筧" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu6">打合せ</span>ITX来社(PM) 　筧</a></span></div></div></div>
+<div class="schedEntry">
+<span class="entry"><a id="" href="ag.cgi?page=ScheduleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/write16.png" align="absmiddle" alt="予定の登録" title="予定の登録" draggable="false"></a></span><span class="entry"><a id="" href="javascript:void(0);" onclick="CB7.Schedule.SimpleEntry.startEntry(this, 'ag.cgi?page=AjaxXHRScheduleSimpleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.20&amp;BDate=da.2025.1.16&amp;CP=sg&amp;elementId=scheduleindex')" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/simpleWrite16.png" align="absmiddle" alt="予定の簡易登録" title="予定の簡易登録" draggable="false"></a></span></div>
+</div></td>
+<td class="eventcell" onclick="CB7.Schedule.EventCell.OnClick(this,event);" onmouseover="CB7.Schedule.EventCell.OnMouseOver(this,event);" onmouseout="CB7.Schedule.EventCell.OnMouseOut(this,event);">
+<div class="dropArea" data-cb-date="da.2025.1.21" data-cb-uid="215">
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.21" data-cb-uid="215" data-cb-st="dt.2025.1.21.-1.-1.-1" data-cb-et="dt.2025.1.21.-1.-1.-1" data-cb-eid="116268" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem1 highlight-event116268" name="event116268"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;sEID=116268&amp;CP=sg" title="工事＿本社:KS 東レ三島研修センター　山口　三輪　大雅×４" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu1">工事＿本社</span>KS 東レ三島研修センター　山口　三輪　大雅×４</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.21" data-cb-uid="215" data-cb-st="dt.2025.1.21.-1.-1.-1" data-cb-et="dt.2025.1.21.-1.-1.-1" data-cb-eid="118203" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem1 highlight-event118203" name="event118203"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;sEID=118203&amp;CP=sg" title="工事＿本社:KS　ホンダモビリティーランド　安田　緒方　青井　" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu1">工事＿本社</span>KS　ホンダモビリティーランド　安田　緒方　青井　</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.21" data-cb-uid="215" data-cb-st="dt.2025.1.21.-1.-1.-1" data-cb-et="dt.2025.1.21.-1.-1.-1" data-cb-eid="117456" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem0 highlight-event117456" name="event117456"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;sEID=117456&amp;CP=sg" title="菊川事業所　筧　百瀬　応　ドミニク　グライ　エファ　アンジェロ" draggable="false"><span style="white-space:nowrap;"></span>菊川事業所　筧　百瀬　応　ドミニク　グライ　エファ　アンジェロ</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.21" data-cb-uid="215" data-cb-st="dt.2025.1.21.9.0.0" data-cb-et="dt.2025.1.21.19.0.0" data-cb-eid="118251" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem8 highlight-event118251" name="event118251"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">9:00-19:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;sEID=118251&amp;CP=sg" title="作業:ロジスティード HDD抜き取り作業　百瀬　アンジェロ" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu8">作業</span>ロジスティード HDD抜き取り作業　百瀬　アンジェロ</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.21" data-cb-uid="215" data-cb-st="dt.2025.1.21.10.0.0" data-cb-et="dt.2025.1.21.14.0.0" data-cb-eid="118288" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem2 highlight-event118288" name="event118288"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">10:00-14:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;sEID=118288&amp;CP=sg" title="現場調査:名城大学OJT　　松本　小澤" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu2">現場調査</span>名城大学OJT　　松本　小澤</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.21" data-cb-uid="215" data-cb-st="dt.2025.1.21.10.0.0" data-cb-et="dt.2025.1.21.18.0.0" data-cb-eid="117948" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem8 highlight-event117948" name="event117948"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">10:00-18:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;sEID=117948&amp;CP=sg" title="作業:ZOZOマリンスタジアム POS入替作業 5名　伊藤　横山　菊池　原田　坂之下" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu8">作業</span>ZOZOマリンスタジアム POS入替作業 5名　伊藤　横山　菊池　原田　坂之下</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.21" data-cb-uid="215" data-cb-st="dt.2025.1.21.10.0.0" data-cb-et="dt.2025.1.21.19.0.0" data-cb-eid="118082" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem3 highlight-event118082" name="event118082"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">10:00-19:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;sEID=118082&amp;CP=sg" title="キッティング:インヴェンティット 現地MAC　設定　2名　保田　オルビル" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu3">キッティング</span>インヴェンティット 現地MAC　設定　2名　保田　オルビル</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.21" data-cb-uid="215" data-cb-st="dt.2025.1.21.13.0.0" data-cb-et="dt.2025.1.21.14.0.0" data-cb-eid="118065" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem6 highlight-event118065" name="event118065"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">13:00-14:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;sEID=118065&amp;CP=sg" title="打合せ:FIG来社　コールセンターの打ち合わせ" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu6">打合せ</span>FIG来社　コールセンターの打ち合わせ</a></span></div></div></div>
+<div class="schedEntry">
+<span class="entry"><a id="" href="ag.cgi?page=ScheduleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/write16.png" align="absmiddle" alt="予定の登録" title="予定の登録" draggable="false"></a></span><span class="entry"><a id="" href="javascript:void(0);" onclick="CB7.Schedule.SimpleEntry.startEntry(this, 'ag.cgi?page=AjaxXHRScheduleSimpleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.21&amp;BDate=da.2025.1.16&amp;CP=sg&amp;elementId=scheduleindex')" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/simpleWrite16.png" align="absmiddle" alt="予定の簡易登録" title="予定の簡易登録" draggable="false"></a></span></div>
+</div></td>
+<td class="eventcell" onclick="CB7.Schedule.EventCell.OnClick(this,event);" onmouseover="CB7.Schedule.EventCell.OnMouseOver(this,event);" onmouseout="CB7.Schedule.EventCell.OnMouseOut(this,event);">
+<div class="dropArea" data-cb-date="da.2025.1.22" data-cb-uid="215">
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.22" data-cb-uid="215" data-cb-st="dt.2025.1.22.-1.-1.-1" data-cb-et="dt.2025.1.22.-1.-1.-1" data-cb-eid="117880" draggable="true">
+</div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.22" data-cb-uid="215" data-cb-st="dt.2025.1.22.-1.-1.-1" data-cb-et="dt.2025.1.22.-1.-1.-1" data-cb-eid="116272" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem1 highlight-event116272" name="event116272"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;sEID=116272&amp;CP=sg" title="工事＿本社:KS 東レ三島研修センター　山口　三輪　大雅×４" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu1">工事＿本社</span>KS 東レ三島研修センター　山口　三輪　大雅×４</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.22" data-cb-uid="215" data-cb-st="dt.2025.1.22.-1.-1.-1" data-cb-et="dt.2025.1.22.-1.-1.-1" data-cb-eid="118207" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem1 highlight-event118207" name="event118207"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;sEID=118207&amp;CP=sg" title="工事＿本社:KS　ホンダモビリティーランド　安田　緒方　青井　" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu1">工事＿本社</span>KS　ホンダモビリティーランド　安田　緒方　青井　</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.22" data-cb-uid="215" data-cb-st="dt.2025.1.22.-1.-1.-1" data-cb-et="dt.2025.1.22.-1.-1.-1" data-cb-eid="117460" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem0 highlight-event117460" name="event117460"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;sEID=117460&amp;CP=sg" title="菊川事業所　百瀬　応　ドミニク　グライ　エファ　アンジェロ" draggable="false"><span style="white-space:nowrap;"></span>菊川事業所　百瀬　応　ドミニク　グライ　エファ　アンジェロ</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.22" data-cb-uid="215" data-cb-st="dt.2025.1.22.-1.-1.-1" data-cb-et="dt.2025.1.22.-1.-1.-1" data-cb-eid="117029" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem4 highlight-event117029" name="event117029"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;sEID=117029&amp;CP=sg" title="休み:筧　有給休暇" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu4">休み</span>筧　有給休暇</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.22" data-cb-uid="215" data-cb-st="dt.2025.1.22.-1.-1.-1" data-cb-et="dt.2025.1.22.-1.-1.-1" data-cb-eid="116175" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem4 highlight-event116175" name="event116175"><div class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/allday7x16.png" align="absmiddle" draggable="false"><span><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;sEID=116175&amp;CP=sg" title="休み:三島" draggable="false"><span style="white-space:nowrap;"></span><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu4">休み</span>三島</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.22" data-cb-uid="215" data-cb-st="dt.2025.1.22.9.0.0" data-cb-et="dt.2025.1.22.11.0.0" data-cb-eid="117001" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem9 highlight-event117001" name="event117001"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">9:00-11:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;sEID=117001&amp;CP=sg" title="その他:ドミニク　健康診断" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu9">その他</span>ドミニク　健康診断</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.22" data-cb-uid="215" data-cb-st="dt.2025.1.22.9.0.0" data-cb-et="dt.2025.1.22.17.30.0" data-cb-eid="117808" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem8 highlight-event117808" name="event117808"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">9:00-17:30&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;sEID=117808&amp;CP=sg" title="作業:FS　au or サブコン　小澤" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu8">作業</span>FS　au or サブコン　小澤</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.22" data-cb-uid="215" data-cb-st="dt.2025.1.22.9.0.0" data-cb-et="dt.2025.1.22.19.0.0" data-cb-eid="118255" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem8 highlight-event118255" name="event118255"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">9:00-19:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;sEID=118255&amp;CP=sg" title="作業:ロジスティード HDD抜き取り作業　筧　アンジェロ" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu8">作業</span>ロジスティード HDD抜き取り作業　筧　アンジェロ</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.22" data-cb-uid="215" data-cb-st="dt.2025.1.22.10.0.0" data-cb-et="dt.2025.1.22.18.0.0" data-cb-eid="117952" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem8 highlight-event117952" name="event117952"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">10:00-18:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;sEID=117952&amp;CP=sg" title="作業:ZOZOマリンスタジアム POS入替作業 5名　伊藤　横山　菊池　原田　坂之下" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu8">作業</span>ZOZOマリンスタジアム POS入替作業 5名　伊藤　横山　菊池　原田　坂之下</a></span></div></div></div>
+<div class="dragTarget dnd-eventdiv-draggable" data-cb-type="onlyme" data-cb-date="da.2025.1.22" data-cb-uid="215" data-cb-st="dt.2025.1.22.10.0.0" data-cb-et="dt.2025.1.22.19.0.0" data-cb-eid="118086" draggable="true">
+<div class="eventLink scheduleMarkTitle0 scheduleMarkEventItem scheduleMarkEventItem3 highlight-event118086" name="event118086"><div class="eventInner"><span class="eventDateTime"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/warn16.png" align="absmiddle" alt="重複予定あり" title="重複予定あり" draggable="false">10:00-19:00&nbsp;</span><br aria-hidden="true"><span class="eventDetail"><a class="event" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;sEID=118086&amp;CP=sg" title="キッティング:インヴェンティット 現地MAC　設定　2名　保田　オルビル" draggable="false"><span class="scheduleEventMenu scheduleMarkEventMenu scheduleMarkEventMenu3">キッティング</span>インヴェンティット 現地MAC　設定　2名　保田　オルビル</a></span></div></div></div>
+<div class="schedEntry">
+<span class="entry"><a id="" href="ag.cgi?page=ScheduleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;CP=sg" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/write16.png" align="absmiddle" alt="予定の登録" title="予定の登録" draggable="false"></a></span><span class="entry"><a id="" href="javascript:void(0);" onclick="CB7.Schedule.SimpleEntry.startEntry(this, 'ag.cgi?page=AjaxXHRScheduleSimpleEntry&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;CP=sg&amp;elementId=scheduleindex')" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/simpleWrite16.png" align="absmiddle" alt="予定の簡易登録" title="予定の簡易登録" draggable="false"></a></span></div>
+</div></td>
+</tr>
+<tr class="bannerrow"><td class="bannerfirstcell"><br></td>
+<td class="banner1 scheduleMarkEventItem0" colspan="1">
+<span class="eventLink scheduleMarkTitle0"><span class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/banner16_s.png" align="absmiddle" draggable="false"><a class="bannerevent" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.16&amp;BDate=da.2025.1.16&amp;sEID=117868&amp;CP=sg" title="白クリッパー使用　小澤" draggable="false">白クリッパー使用　小澤</a></span></span><br>
+</td>
+<td class="banner1 scheduleMarkEventItem0" colspan="1">
+<span class="eventLink scheduleMarkTitle0"><span class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/banner16_s.png" align="absmiddle" draggable="false"><a class="bannerevent" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.17&amp;BDate=da.2025.1.16&amp;sEID=118372&amp;CP=sg" title="白クリッパー使用　小澤" draggable="false">白クリッパー使用　小澤</a></span></span><br>
+</td>
+<td class="banner1 scheduleMarkEventItem0" colspan="1">
+<span class="eventLink scheduleMarkTitle0"><span class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/banner16_s.png" align="absmiddle" draggable="false"><a class="bannerevent" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.18&amp;BDate=da.2025.1.16&amp;sEID=118364&amp;CP=sg" title="白クリッパー使用　小澤" draggable="false">白クリッパー使用　小澤</a></span></span><br>
+</td>
+<td class="nobanner" colspan="3"><br></td>
+<td class="banner1 scheduleMarkEventItem0" colspan="1">
+<span class="eventLink scheduleMarkTitle0"><span class="eventInner"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/banner16_s.png" align="absmiddle" draggable="false"><a class="bannerevent" href="ag.cgi?page=ScheduleView&amp;UID=215&amp;GID=186&amp;Date=da.2025.1.22&amp;BDate=da.2025.1.16&amp;sEID=117880&amp;CP=sg" title="白クリッパー使用　小澤" draggable="false">白クリッパー使用　小澤</a></span></span><br>
+</td>
+</tr>
+<tr class="weekfoot" id="weekfooter">
+<td align="center" class="footernavi" nowrap="">
+<div class="firstcellbuttons-wrapper" style="display: none;">
+<a name="weekfoot-215" draggable="false"></a>
+<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;Date=da.2025.1.12&amp;dummy=1#weekfoot-215" title="前週" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_lj30x20.png" align="absmiddle" draggable="false"></a>&nbsp;<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;dummy=1#weekfoot-215" title="今日" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/today30x20.png" align="absmiddle" draggable="false"></a>&nbsp;<a href="ag.cgi?page=ScheduleIndex&amp;GID=186&amp;CP=&amp;SP=&amp;BDate=da.2025.1.16&amp;CP=sg&amp;Date=da.2025.1.19&amp;dummy=1#weekfoot-215" title="翌週" draggable="false"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/arrow_rj30x20.png" align="absmiddle" draggable="false"></a>&nbsp;</div>
+</td>
+<th scope="col" align="center" class="weekday" nowrap=""><span class="today">16（木）</span></th>
+<th scope="col" align="center" class="weekday" nowrap=""><span class="">17（金）</span></th>
+<th scope="col" align="center" class="saturday" nowrap=""><span class="">18（土）</span></th>
+<th scope="col" align="center" class="sunday" nowrap=""><span class="">19（日）</span></th>
+<th scope="col" align="center" class="weekday" nowrap=""><span class="">20（月）</span></th>
+<th scope="col" align="center" class="weekday" nowrap=""><span class="">21（火）</span></th>
+<th scope="col" align="center" class="weekday" nowrap=""><span class="">22（水）</span></th>
+</tr>
+</tbody></table>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+ const params = {
+ uid  : "215",
+ gid  : "186",
+ eid  : "",
+ ncp  : "sg",
+ cp   : "",
+ date : "da.2025.1.16",
+ bdate : "da.2025.1.16",
+ text : "",
+ observeId: "#redraw"
+ };
+ new CB7.Schedule.ScheduleDnDForMoveDay(params);
+});
+</script>
+ </div>
+</div>
+<div class="vr_nNavi">
+<span class="fontDisable">先頭へ</span> | <span class="fontDisable">&lt;&lt; 前の 20 件へ</span> | <span class="fontDisable">次の 20 件へ &gt;&gt;</span>
+</div>
+ </div>
+ </div>
+ </td>
+ </tr>
+</tbody></table>
+</td></tr></tbody></table>
+</div>
+<div class="vr_contentBottom clearfix">
+<script language="javascript" type="text/javascript">
+<!--
+ShowBackLink("", "", true, "https://static.cybozu.com/o/10.8.7_25.1_2616498/image/backlink16.png", "", false);
+//-->
+</script><div class="backlink"><a href="ag.cgi?page=AGIndex&amp;cp=&amp;sp=" onclick="undefined"><img src="https://static.cybozu.com/o/10.8.7_25.1_2616498/image/backlink16.png" align="absmiddle" border="0">トップページへ</a></div>
+
+</div>
+</div></div>
+ <div class="footbar"></div>
+</div>
+<div id="js-preview-mask" class="fullscreen-wrapper preview-mask select-none"></div>
+<div id="js-preview-dialog" class="fullscreen-wrapper preview-dialog select-none">
+ <div id="js-preview-header" class="preview-header js-preview-click-masking">
+ <div id="js-preview-header-left" class="preview-header-left">
+<input class="vr_hotButton preview-header-usefile-button" type="button" value="← 利用する" id="js-preview-use-file"> <span class="preview-header-menu-item preview-header-title" title=""><span id="js-preview-title-icon" class="preview-header-icon"></span><span id="js-preview-title" class="preview-header-label"></span></span>
+<a id="js-preview-info" class="preview-header-menu-item preview-header-button  js-preview-header-button" title="詳細"><span class="preview-header-icon info"></span><span class="preview-header-button-label js-preview-header-button-label">詳細</span></a><a id="js-preview-download" class="preview-header-menu-item preview-header-button  js-preview-header-button" title="ダウンロード" download=""><span class="preview-header-icon download"></span><span class="preview-header-button-label js-preview-header-button-label">ダウンロード</span></a> </div>
+ <div id="js-preview-header-right" class="preview-header-right">
+<a id="js-preview-image-actual" class="preview-header-menu-item preview-header-button display-none js-preview-header-button" title="実際のサイズに合わせる"><span class="preview-header-icon actual"></span><span class="preview-header-button-label js-preview-header-button-label">実際のサイズに合わせる</span></a><a id="js-preview-image-fit" class="preview-header-menu-item preview-header-button display-none js-preview-header-button" title="表示領域に合わせる"><span class="preview-header-icon fit"></span><span class="preview-header-button-label js-preview-header-button-label">表示領域に合わせる</span></a><a id="js-preview-prev" class="preview-header-menu-item preview-header-button  js-preview-header-button" title="前へ"><span class="preview-header-icon prev"></span><span class="preview-header-button-label js-preview-header-button-label">前へ</span></a><a id="js-preview-next" class="preview-header-menu-item preview-header-button  js-preview-header-button" title="次へ"><span class="preview-header-button-label js-preview-header-button-label">次へ</span><span class="preview-header-icon next"></span></a><a id="js-preview-close" class="preview-header-menu-item preview-header-button close js-preview-header-button" title="閉じる"><span class="preview-header-icon close"></span><span class="preview-header-button-label js-preview-header-button-label"></span></a> </div>
+ </div>
+ <div id="js-preview-number" class="preview-number total js-preview-click-masking"><span id="js-preview-number-current"></span>&nbsp;/&nbsp;<span id="js-preview-number-total"></span></div>
+ <div id="js-preview-main" class="preview-main">
+ <div class="preview-desc">プレビューが正しく表示されないときは、ダウンロードして確認してください。</div>
+ <div id="js-preview-content-wrapper" class="preview-content-wrapper"></div>
+ </div>
+ <div id="js-preview-number-pdf" class="preview-number-wrapper-pdf">
+ <div class="preview-number pdf">ページ：<span id="js-preview-number-current-pdf"></span>&nbsp;/&nbsp;<span id="js-preview-number-total-pdf"></span></div>
+ </div>
+</div>
+<div id="js-preview-spinner" class="fullscreen-wrapper preview-spinner select-none"></div>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/pdfjs/pdf.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/pdf.js?_v=10871ASP20241129182339.js"></script>
+<script type="text/javascript" charset="UTF-8" src="https://static.cybozu.com/o/10.8.7_25.1_2616498/html/file.js?_v=10871ASP20241129182339.js"></script>
+<script>
+ $(function() {
+ CB7.File.Preview.init();
+ });
+</script>
+
+
+<div id="cb-body-tooltip" hidden=""></div></body></html>
