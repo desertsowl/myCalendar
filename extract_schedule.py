@@ -6,6 +6,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service  # Serviceをインポート
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 # Cybozuログイン情報
 CYBOZU_URL = "https://denshin.cybozu.com/o/ag.cgi"
@@ -23,18 +25,22 @@ def fetch_schedule(month_offset=0):
     """指定した月のスケジュールページを取得しキャッシュ"""
     cache_file = os.path.join(CACHE_DIR, f"schedule_{month_offset}.html")
     
-    # キャッシュが10分以内なら再利用
-    if os.path.exists(cache_file) and (time.time() - os.path.getmtime(cache_file) < 600):
+    # キャッシュが60分以内なら再利用
+    if os.path.exists(cache_file) and (time.time() - os.path.getmtime(cache_file) < 3600):
         with open(cache_file, "r", encoding="utf-8") as f:
             return f.read()
     
-    # Seleniumを使用してスケジュールデータを取得
+    # 対象月の日付を計算
+    target_date = datetime.now() + relativedelta(months=month_offset)
+    schedule_url = f"https://denshin.cybozu.com/o/ag.cgi?page=ScheduleUserMonth#date=da.{target_date.year}.{target_date.month:02d}.01"
+    
+    # Seleniumの設定
     options = Options()
-    options.add_argument("--headless")  # ヘッドレスモードで実行
+    options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
 
-    service = Service(CHROME_DRIVER_PATH)  # Serviceオブジェクトを使用
+    service = Service(CHROME_DRIVER_PATH)
     driver = webdriver.Chrome(service=service, options=options)
 
     try:
@@ -49,10 +55,9 @@ def fetch_schedule(month_offset=0):
 
         time.sleep(3)  # ログイン完了を待つ
 
-        # スケジュールページに移動
-        schedule_url = f"https://denshin.cybozu.com/o/ag.cgi?page=ScheduleIndex&month_offset={month_offset}"
+        # 修正したURLでスケジュールページにアクセス
         driver.get(schedule_url)
-        time.sleep(3)  # ページロードを待つ
+        time.sleep(3)
 
         # ページソースを取得
         html_content = driver.page_source
