@@ -4,6 +4,8 @@ from extract_schedule import fetch_schedule
 from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 
 app = Flask(__name__)
 
@@ -50,12 +52,29 @@ def index():
     """メインページ"""
     # デフォルトは当月
     month_offset = request.args.get("month_offset", 0, type=int)
+    
+    # 現在の日付を取得
+    today = datetime.now()
+    
+    # 月のオプション用のデータを作成
+    months = []
+    for offset in [-1, 0, 1]:
+        target_date = today + relativedelta(months=offset)
+        months.append({
+            'value': offset,
+            'label': target_date.strftime('%Y/%m'),
+            'selected': offset == month_offset
+        })
+
+    # Nameセレクタ用の名前リストを定義
+    name_list = ["三島","三輪","伊藤","保田","原田","坂之下","安田","小澤","山口","岡本",
+                 "早川","松本","松村","植松","横山","渋谷","百瀬","緒方","菊池","青井","黒田"]
+
     html = fetch_schedule(month_offset)
     if not html:
         return "スケジュールデータを取得できませんでした。", 500
     schedule_data = parse_schedule(html)
-    return render_template("index.html", schedule_data=schedule_data)
+    return render_template("index.html", schedule_data=schedule_data, name_list=name_list, months=months)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
-
