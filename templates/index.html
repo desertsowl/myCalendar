@@ -105,6 +105,23 @@
             width: 100px;
             color: #666;
         }
+
+        .title-row {
+            border-bottom: double 3px #ccc;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+        
+        .processing-info {
+            font-size: 0.7rem;
+            color: #666;
+            margin-left: 15px;
+        }
+        
+        .refresh-button {
+            padding: 5px 15px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 
@@ -123,7 +140,20 @@
 
     <!-- Main Content -->
     <div class="container my-4">
-        <h2 class="text-center"><i class="bi bi-calendar-check"></i> スケジュール</h2>
+        <div class="title-row">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <h2 class="mb-0">スケジュール</h2>
+                    <span class="processing-info">
+                        (更新:<span id="processingTime">-.-</span>秒 / <span id="cacheAge">-</span>前)
+                    </span>
+                </div>
+                <button id="refreshButton" class="btn btn-outline-primary refresh-button">
+                    <i class="bi bi-arrow-clockwise"></i> 更新
+                </button>
+            </div>
+        </div>
+
         <div class="controls">
             <select id="nameSelector" class="form-select">
                 <option value="">全員</option>
@@ -164,24 +194,34 @@
             const nameSelector = document.getElementById('nameSelector');
             const monthSelector = document.getElementById('monthSelector');
             const scheduleField = document.getElementById('schedule-field');
+            const processingTimeEl = document.getElementById('processingTime');
+            const cacheAgeEl = document.getElementById('cacheAge');
             
             async function updateSchedule() {
-                const name = nameSelector.value;
-                const monthOffset = monthSelector.value;
-                
+                const startTime = performance.now();
                 try {
-                    scheduleField.innerHTML = '<div class="loading">データを読み込み中...</div>';
+                    const name = nameSelector.value;
+                    const monthOffset = monthSelector.value;
+                    let html = '';
                     
-                    // 常に今月のデータを取得し、フロントエンドでフィルタリング
                     const response = await fetch(`/api/schedule?name=${encodeURIComponent(name)}&month_offset=${monthOffset}`);
-                    const data = await response.json();
+                    const responseData = await response.json();
                     
-                    if (!response.ok) {
-                        throw new Error(data.error || 'データの取得に失敗しました');
+                    // 処理時間を計算して表示
+                    const processingTime = ((performance.now() - startTime) / 1000).toFixed(2);
+                    processingTimeEl.textContent = processingTime;
+                    
+                    // キャッシュの経過時間を取得して表示
+                    if (responseData.cache_age) {
+                        const minutes = Math.floor(responseData.cache_age / 60);
+                        cacheAgeEl.textContent = `${minutes}分`;
                     }
                     
-                    // スケジュールの表示を更新
-                    let html = '';
+                    if (!response.ok) {
+                        throw new Error(responseData.error || 'データの取得に失敗しました');
+                    }
+                    
+                    const data = responseData.data;  // データは.dataプロパティに格納されている
                     
                     if (Object.keys(data).length > 0) {
                         const entries = Object.entries(data);
@@ -197,28 +237,51 @@
                         });
                         
                         for (const [date, events] of entries) {
-                            html += `
-                                <div class="date-section">
-                                    <h3>${date}</h3>
-                                    <div class="events">
-                                        ${events.map(event => `
-                                            <div class="event-row">
-                                                <span class="time">${event.time}</span>
-                                                <span class="title">${event.title}</span>
-                                            </div>
-                                        `).join('')}
+                            if (Array.isArray(events)) {  // eventsが配列であることを確認
+                                html += `
+                                    <div class="date-section">
+                                        <h3>${date}</h3>
+                                        <div class="events">
+                                            ${events.map(event => `
+                                                <div class="event-row">
+                                                    <span class="time">${event.time}</span>
+                                                    <span class="title">${event.title}</span>
+                                                </div>
+                                            `).join('')}
+                                        </div>
                                     </div>
-                                </div>
-                            `;
+                                `;
+                            }
                         }
                     }
                     
-                    scheduleField.innerHTML = html;
+                    scheduleField.innerHTML = html || '<div class="no-data">該当する月のスケジュールはありません</div>';
                     
                 } catch (error) {
+                    console.error('Error:', error);
                     scheduleField.innerHTML = `<div class="error">${error.message}</div>`;
                 }
             }
+            
+            // 更新ボタンのクリックイベント
+            document.getElementById('refreshButton').addEventListener('click', async function() {
+                try {
+                    this.disabled = true;  // ボタンを無効化
+                    this.innerHTML = '<i class="bi bi-arrow-clockwise"></i> 更新中...';
+                    
+                    // キャッシュの再取得
+                    const response = await fetch('/refresh_cache');
+                    if (!response.ok) {
+                        throw new Error('キャッシュの更新に失敗しました');
+                    }
+                    // ページをリロード
+                    window.location.reload();
+                } catch (error) {
+                    alert(error.message);
+                    this.disabled = false;
+                    this.innerHTML = '<i class="bi bi-arrow-clockwise"></i> 更新';
+                }
+            });
             
             nameSelector.addEventListener('change', updateSchedule);
             monthSelector.addEventListener('change', updateSchedule);

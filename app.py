@@ -4,8 +4,12 @@ from extract_schedule import fetch_schedule
 import re
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import time
 
 app = Flask(__name__)
+
+# キャッシュディレクトリの設定
+CACHE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cache")
 
 def parse_schedule(html):
     """スケジュールHTMLから必要なデータを抽出"""
@@ -170,7 +174,28 @@ def get_filtered_schedule():
 
     sorted_schedule = dict(sorted(grouped_schedule.items(), key=lambda x: date_sort_key(x[0])))
     
-    return jsonify(sorted_schedule)
+    # キャッシュの経過時間を計算
+    cache_file = os.path.join(CACHE_DIR, "schedule_current.html")
+    cache_age = int(time.time() - os.path.getmtime(cache_file))
+    
+    response_data = {
+        'data': sorted_schedule,
+        'cache_age': cache_age
+    }
+    
+    return jsonify(response_data)
+
+@app.route("/refresh_cache")
+def refresh_cache():
+    """スケジュールのキャッシュを強制的に更新"""
+    try:
+        html = fetch_schedule(force_refresh=True)
+        if not html:
+            return jsonify({"error": "データを取得できませんでした"}), 500
+        return jsonify({"success": True})
+    except Exception as e:
+        print(f"キャッシュ更新エラー: {str(e)}")
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

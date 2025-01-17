@@ -22,29 +22,30 @@ CACHE_DIR = "./cache"
 if not os.path.exists(CACHE_DIR):
     os.makedirs(CACHE_DIR)
 
-def fetch_schedule(month_offset=None):  # month_offsetパラメータは完全に無視
-    """スケジュールページを取得しキャッシュ（常に今月のページ）"""
+def fetch_schedule(force_refresh=False):
+    """スケジュールページを取得しキャッシュ"""
     cache_file = os.path.join(CACHE_DIR, "schedule_current.html")
     
-    # キャッシュが60分以内なら再利用
-    if os.path.exists(cache_file) and (time.time() - os.path.getmtime(cache_file) < 3600):
-        with open(cache_file, "r", encoding="utf-8") as f:
-            return f.read()
-    
-    # 常に今月の日付を使用
-    target_date = datetime.now()
-    schedule_url = f"https://denshin.cybozu.com/o/ag.cgi?page=ScheduleUserMonth#date=da.{target_date.year}.{target_date.month:02d}.01"
+    # キャッシュが有効な場合はキャッシュを返す
+    if not force_refresh and os.path.exists(cache_file) and \
+       (time.time() - os.path.getmtime(cache_file) < 3600):
+        try:
+            with open(cache_file, "r", encoding="utf-8") as f:
+                return f.read()
+        except Exception as e:
+            print(f"キャッシュファイルの読み込みエラー: {str(e)}")
     
     # Seleniumの設定
     options = Options()
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
-
-    service = Service(CHROME_DRIVER_PATH)
-    driver = webdriver.Chrome(service=service, options=options)
+    options.add_argument("--disable-dev-shm-usage")
 
     try:
+        service = Service(CHROME_DRIVER_PATH)
+        driver = webdriver.Chrome(service=service, options=options)
+        
         # ログインページにアクセス
         driver.get(LOGIN_URL)
         time.sleep(2)
@@ -56,21 +57,39 @@ def fetch_schedule(month_offset=None):  # month_offsetパラメータは完全�
 
         time.sleep(3)  # ログイン完了を待つ
 
-        # 修正したURLでスケジュールページにアクセス
+        # 今月の日付を計算してURLを生成
+        target_date = datetime.now()
+        schedule_url = f"{CYBOZU_URL}?page=ScheduleUserMonth#date=da.{target_date.year}.{target_date.month:02d}.01"
+        
+        # スケジュールページにアクセス
         driver.get(schedule_url)
         time.sleep(3)
 
         # ページソースを取得
         html_content = driver.page_source
+        
+        if not html_content:
+            raise Exception("ページの内容が空です")
 
         # キャッシュに保存
-        with open(cache_file, "w", encoding="utf-8") as f:
-            f.write(html_content)
+        try:
+            os.makedirs(os.path.dirname(cache_file), exist_ok=True)
+            with open(cache_file, "w", encoding="utf-8") as f:
+                f.write(html_content)
+        except Exception as e:
+            print(f"キャッシュファイルの書き込みエラー: {str(e)}")
 
         return html_content
 
+    except Exception as e:
+        print(f"スケジュール取得エラー: {str(e)}")
+        return None
+
     finally:
-        driver.quit()
+        try:
+            driver.quit()
+        except Exception as e:
+            print(f"ドライバー終了エラー: {str(e)}")
 
 def parse_schedule(html):
     """スケジュールHTMLから必要なデータを抽出"""
