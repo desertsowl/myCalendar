@@ -98,18 +98,16 @@
                 </select>
             </div>
         </form>
-        <div class="schedule-field">
-            {% for day in schedule_data %}
-            <div class="mb-4">
-                <h4 class="text-primary">{{ day.date }}</h4>
-                <div>
-                    {% for individual in day.individuals %}
-                    <h5 class="text-secondary">{{ individual.person }}</h5>
-                    <ul>
-                        {% for event in individual.events %}
-                        <li>{{ event.time }} - {{ event.event_name }}</li>
-                        {% endfor %}
-                    </ul>
+        <div id="schedule-field">
+            {% for date, events in schedule_data.items() %}
+            <div class="date-section">
+                <h3>{{ date }}</h3>
+                <div class="events">
+                    {% for event in events %}
+                    <div class="event-row">
+                        <span class="time">{{ event.time }}</span>
+                        <span class="title">{{ event.title }}</span>
+                    </div>
                     {% endfor %}
                 </div>
             </div>

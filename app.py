@@ -1,50 +1,50 @@
 from flask import Flask, render_template, request
 import os
 from extract_schedule import fetch_schedule
-from bs4 import BeautifulSoup
-from selenium.webdriver.chrome.service import Service
-from selenium import webdriver
-from datetime import datetime, timedelta
+import re
+from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 app = Flask(__name__)
 
-CHROME_DRIVER_PATH = ".venv/driver/chromedriver"
-service = Service(CHROME_DRIVER_PATH)
-driver = webdriver.Chrome(service=service)
-
-
 def parse_schedule(html):
-    """
-    HTMLからスケジュールデータを解析して抽出
-    日付 > 個人名 > 時間と案件名 の階層構造を返す
-    """
-    soup = BeautifulSoup(html, "html.parser")
+    """スケジュールHTMLから必要なデータを抽出"""
+    # 各行を個別に処理
     schedule_data = []
-
-    # 日付ごとのセクションを抽出
-    date_sections = soup.find_all("div", class_="date-section")  # 日付を識別するクラス
-    for date_section in date_sections:
-        date = date_section.find("span", class_="date").text.strip()  # 日付を抽出
-        individuals = []
-
-        # 個人名ごとのスケジュールを取得
-        person_sections = date_section.find_all("div", class_="person-section")
-        for person_section in person_sections:
-            person_name = person_section.find("span", class_="person-name").text.strip()  # 個人名を抽出
-            events = []
-
-            # 案件ごとの詳細を取得
-            event_rows = person_section.find_all("div", class_="event-row")
-            for event_row in event_rows:
-                time = event_row.find("span", class_="time").text.strip()  # 時間を抽出
-                event_name = event_row.find("span", class_="event-name").text.strip()  # 案件名を抽出
-                events.append({"time": time, "event_name": event_name})
-
-            individuals.append({"person": person_name, "events": events})
-
-        schedule_data.append({"date": date, "individuals": individuals})
-
+    
+    # 1行ずつ処理
+    for line in html.split('\n'):
+        # eventLinkで始まる行のみを処理
+        if not line.strip().startswith('<div class="eventLink'):
+            continue
+            
+        # 日付の抽出
+        date_match = re.search(r'<a class="event"[^>]*Date=da\.([0-9.]+)&', line)
+        date = date_match.group(1) if date_match else "日付なし"
+            
+        # タイトルの抽出
+        title_match = re.search(r'<a class="event"[^>]*title="([^"]+)"', line)
+        title = title_match.group(1) if title_match else "タイトルなし"
+            
+        # 時刻の抽出
+        if 'allday' in line and 'png' in line:
+            time = "終日"
+        else:
+            # まず<img>タグの後の時刻を探す
+            time_match = re.search(r'<img[^>]*>([0-9:-]+)', line)
+            if time_match:
+                time = time_match.group(1)
+            else:
+                # <img>タグがない場合は<span class="eventDateTime">の後の時刻を探す
+                time_match = re.search(r'<span class="eventDateTime">([0-9:-]+)&nbsp;', line)
+                time = time_match.group(1) if time_match else "時刻なし"
+        
+        schedule_data.append({
+            "date": date,
+            "time": time,
+            "title": title
+        })
+    
     return schedule_data
 
 @app.route("/")
@@ -73,8 +73,26 @@ def index():
     html = fetch_schedule(month_offset)
     if not html:
         return "スケジュールデータを取得できませんでした。", 500
+    
     schedule_data = parse_schedule(html)
-    return render_template("index.html", schedule_data=schedule_data, name_list=name_list, months=months)
+    
+    # 日付でグループ化
+    grouped_schedule = {}
+    for item in schedule_data:
+        date = item['date']
+        if date not in grouped_schedule:
+            grouped_schedule[date] = []
+        grouped_schedule[date].append({
+            'time': item['time'],
+            'title': item['title']
+        })
+    
+    return render_template(
+        "index.html", 
+        schedule_data=grouped_schedule, 
+        name_list=name_list, 
+        months=months
+    )
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

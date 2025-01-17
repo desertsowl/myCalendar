@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service  # Serviceをインポート
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import re
 
 # Cybozuログイン情報
 CYBOZU_URL = "https://denshin.cybozu.com/o/ag.cgi"
@@ -73,15 +74,41 @@ def fetch_schedule(month_offset=0):
 
 def parse_schedule(html):
     """スケジュールHTMLから必要なデータを抽出"""
-    soup = BeautifulSoup(html, "html.parser")
+    # 各行を個別に処理
     schedule_data = []
     
-    # HTML構造に応じて解析
-    rows = soup.find_all("tr")  # 例: テーブル行を取得
-    for row in rows:
-        columns = row.find_all("td")
-        if columns:
-            schedule_data.append([col.text.strip() for col in columns])
+    # 1行ずつ処理
+    for line in html.split('\n'):
+        # eventLinkで始まる行のみを処理
+        if not line.strip().startswith('<div class="eventLink'):
+            continue
+            
+        # 日付の抽出
+        date_match = re.search(r'<a class="event"[^>]*Date=da\.([0-9.]+)&', line)
+        date = date_match.group(1) if date_match else "日付なし"
+            
+        # タイトルの抽出
+        title_match = re.search(r'<a class="event"[^>]*title="([^"]+)"', line)
+        title = title_match.group(1) if title_match else "タイトルなし"
+            
+        # 時刻の抽出
+        if 'allday' in line and 'png' in line:
+            time = "終日"
+        else:
+            # まず<img>タグの後の時刻を探す
+            time_match = re.search(r'<img[^>]*>([0-9:-]+)', line)
+            if time_match:
+                time = time_match.group(1)
+            else:
+                # <img>タグがない場合は<span class="eventDateTime">の後の時刻を探す
+                time_match = re.search(r'<span class="eventDateTime">([0-9:-]+)&nbsp;', line)
+                time = time_match.group(1) if time_match else "時刻なし"
+        
+        schedule_data.append({
+            "date": date,
+            "time": time,
+            "title": title
+        })
     
     return schedule_data
 
