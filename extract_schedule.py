@@ -22,17 +22,17 @@ CACHE_DIR = "./cache"
 if not os.path.exists(CACHE_DIR):
     os.makedirs(CACHE_DIR)
 
-def fetch_schedule(month_offset=0):
-    """指定した月のスケジュールページを取得しキャッシュ"""
-    cache_file = os.path.join(CACHE_DIR, f"schedule_{month_offset}.html")
+def fetch_schedule(month_offset=None):  # month_offsetパラメータは完全に無視
+    """スケジュールページを取得しキャッシュ（常に今月のページ）"""
+    cache_file = os.path.join(CACHE_DIR, "schedule_current.html")
     
     # キャッシュが60分以内なら再利用
     if os.path.exists(cache_file) and (time.time() - os.path.getmtime(cache_file) < 3600):
         with open(cache_file, "r", encoding="utf-8") as f:
             return f.read()
     
-    # 対象月の日付を計算
-    target_date = datetime.now() + relativedelta(months=month_offset)
+    # 常に今月の日付を使用
+    target_date = datetime.now()
     schedule_url = f"https://denshin.cybozu.com/o/ag.cgi?page=ScheduleUserMonth#date=da.{target_date.year}.{target_date.month:02d}.01"
     
     # Seleniumの設定
@@ -109,6 +109,16 @@ def parse_schedule(html):
             "time": time,
             "title": title
         })
+    
+    # データの内容をコンソールに表示
+    print("\n=== スケジュールデータ ===")
+    print(f"抽出されたレコード数: {len(schedule_data)}")
+    print("\n最初の5件:")
+    for i, item in enumerate(schedule_data[:5], 1):
+        print(f"\n{i}件目:")
+        print(f"  日付: {item['date']}")
+        print(f"  時刻: {item['time']}")
+        print(f"  タイトル: {item['title']}")
     
     return schedule_data
 

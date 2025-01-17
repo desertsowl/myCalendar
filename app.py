@@ -70,15 +70,25 @@ def index():
     name_list = ["三島","三輪","伊藤","保田","原田","坂之下","安田","小澤","山口","岡本",
                  "早川","松本","松村","植松","横山","渋谷","百瀬","緒方","菊池","青井","黒田"]
 
-    html = fetch_schedule(month_offset)
+    # 常に今月のデータを取得
+    html = fetch_schedule()  # month_offsetは使用しない
     if not html:
         return "スケジュールデータを取得できませんでした。", 500
     
     schedule_data = parse_schedule(html)
     
+    # 選択された月のデータのみをフィルタリング
+    target_date = today + relativedelta(months=month_offset)
+    target_year_month = f"{target_date.year}.{target_date.month:02d}"
+    
+    filtered_data = [
+        item for item in schedule_data
+        if item['date'].startswith(target_year_month)
+    ]
+    
     # 日付でグループ化
     grouped_schedule = {}
-    for item in schedule_data:
+    for item in filtered_data:
         date = item['date']
         if date not in grouped_schedule:
             grouped_schedule[date] = []
@@ -100,8 +110,8 @@ def get_filtered_schedule():
     name = request.args.get("name", "")
     month_offset = request.args.get("month_offset", 0, type=int)
     
-    # スケジュールデータの取得
-    html = fetch_schedule(month_offset)
+    # 今月のデータのみを取得
+    html = fetch_schedule()  # month_offsetは使用しない
     if not html:
         return jsonify({"error": "データを取得できませんでした"}), 500
     
@@ -116,9 +126,27 @@ def get_filtered_schedule():
     else:
         filtered_data = schedule_data
     
+    # 選択された月のデータのみをフィルタリング
+    target_date = datetime.now() + relativedelta(months=month_offset)
+    target_year_month = f"{target_date.year}.{target_date.month:02d}"
+    
+    # 日付の比較を修正
+    month_filtered_data = []
+    for item in filtered_data:
+        try:
+            date_parts = item['date'].split('.')
+            item_year = int(date_parts[0])
+            item_month = int(date_parts[1])
+            
+            if (item_year == target_date.year and 
+                item_month == target_date.month):
+                month_filtered_data.append(item)
+        except (IndexError, ValueError):
+            continue
+    
     # 日付でグループ化
     grouped_schedule = {}
-    for item in filtered_data:
+    for item in month_filtered_data:
         date = item['date']
         if date not in grouped_schedule:
             grouped_schedule[date] = []
@@ -127,7 +155,11 @@ def get_filtered_schedule():
             'title': item['title']
         })
     
-    return jsonify(grouped_schedule)
+    # 日付順にソート（年.月.日の形式で数値としてソート）
+    sorted_schedule = dict(sorted(grouped_schedule.items(), 
+        key=lambda x: [int(n) for n in x[0].split('.')]))
+    
+    return jsonify(sorted_schedule)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
