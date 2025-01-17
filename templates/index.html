@@ -61,6 +61,50 @@
         .csv-btn:hover {
             background-color: #005a93;
         }
+
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-select {
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .error {
+            color: red;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .date-section {
+            margin-bottom: 20px;
+        }
+
+        .event-row {
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .time {
+            display: inline-block;
+            width: 100px;
+            color: #666;
+        }
     </style>
 </head>
 
@@ -80,39 +124,27 @@
     <!-- Main Content -->
     <div class="container my-4">
         <h2 class="text-center"><i class="bi bi-calendar-check"></i> スケジュール</h2>
-        <form>
-            <div class="mb-3">
-                <label for="month" class="form-label">Month</label>
-                <select id="month" class="form-select" name="month_offset">
-                    {% for month in months %}
-                    <option value="{{ month.value }}" {% if month.selected %}selected{% endif %}>{{ month.label }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <select id="name" class="form-select" name="name">
-                    {% for name in name_list %}
-                    <option value="{{ name }}">{{ name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </form>
-        <div id="schedule-field">
-            {% for date, events in schedule_data.items() %}
-            <div class="date-section">
-                <h3>{{ date }}</h3>
-                <div class="events">
-                    {% for event in events %}
-                    <div class="event-row">
-                        <span class="time">{{ event.time }}</span>
-                        <span class="title">{{ event.title }}</span>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endfor %}
+        <div class="controls">
+            <select id="nameSelector" class="form-select">
+                <option value="">全員</option>
+                {% for name in name_list %}
+                <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+            
+            <select id="monthSelector" class="form-select">
+                {% for month in months %}
+                <option value="{{ month.value }}" {% if month.selected %}selected{% endif %}>
+                    {{ month.label }}
+                </option>
+                {% endfor %}
+            </select>
         </div>
+
+        <div id="schedule-field">
+            <!-- スケジュールデータがここに表示されます -->
+        </div>
+
         <button class="csv-btn mt-3">CSV Output</button>
     </div>
 
@@ -126,6 +158,61 @@
         document.getElementById('drawerButton').addEventListener('click', function () {
             const drawerMenu = document.getElementById('drawerMenu');
             drawerMenu.style.display = drawerMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const nameSelector = document.getElementById('nameSelector');
+            const monthSelector = document.getElementById('monthSelector');
+            const scheduleField = document.getElementById('schedule-field');
+            
+            // スケジュールデータを更新する関数
+            async function updateSchedule() {
+                const name = nameSelector.value;
+                const monthOffset = monthSelector.value;
+                
+                try {
+                    // ローディング表示
+                    scheduleField.innerHTML = '<div class="loading">データを読み込み中...</div>';
+                    
+                    // APIリクエスト
+                    const response = await fetch(`/api/schedule?name=${encodeURIComponent(name)}&month_offset=${monthOffset}`);
+                    const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.error || 'データの取得に失敗しました');
+                    }
+                    
+                    // スケジュールの表示を更新
+                    let html = '';
+                    for (const [date, events] of Object.entries(data)) {
+                        html += `
+                            <div class="date-section">
+                                <h3>${date}</h3>
+                                <div class="events">
+                                    ${events.map(event => `
+                                        <div class="event-row">
+                                            <span class="time">${event.time}</span>
+                                            <span class="title">${event.title}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    scheduleField.innerHTML = html || '<div class="no-data">該当するスケジュールはありません</div>';
+                    
+                } catch (error) {
+                    scheduleField.innerHTML = `<div class="error">${error.message}</div>`;
+                }
+            }
+            
+            // セレクタの変更イベントを監視
+            nameSelector.addEventListener('change', updateSchedule);
+            monthSelector.addEventListener('change', updateSchedule);
+            
+            // 初期表示
+            updateSchedule();
         });
     </script>
 </body>

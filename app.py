@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import os
 from extract_schedule import fetch_schedule
 import re
@@ -93,6 +93,41 @@ def index():
         name_list=name_list, 
         months=months
     )
+
+@app.route("/api/schedule")
+def get_filtered_schedule():
+    """指定された名前と月のスケジュールデータを返すAPI"""
+    name = request.args.get("name", "")
+    month_offset = request.args.get("month_offset", 0, type=int)
+    
+    # スケジュールデータの取得
+    html = fetch_schedule(month_offset)
+    if not html:
+        return jsonify({"error": "データを取得できませんでした"}), 500
+    
+    schedule_data = parse_schedule(html)
+    
+    # 名前でフィルタリング
+    if name:
+        filtered_data = [
+            item for item in schedule_data
+            if name in item['title']
+        ]
+    else:
+        filtered_data = schedule_data
+    
+    # 日付でグループ化
+    grouped_schedule = {}
+    for item in filtered_data:
+        date = item['date']
+        if date not in grouped_schedule:
+            grouped_schedule[date] = []
+        grouped_schedule[date].append({
+            'time': item['time'],
+            'title': item['title']
+        })
+    
+    return jsonify(grouped_schedule)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
