@@ -22,31 +22,49 @@ CACHE_DIR = "./cache"
 if not os.path.exists(CACHE_DIR):
     os.makedirs(CACHE_DIR)
 
+def measure_time(func):
+    """関数の実行時間を計測するデコレータ"""
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        print(f"[処理時間] {func.__name__}: {end - start:.2f}秒")
+        return result
+    return wrapper
+
+@measure_time
 def fetch_schedule(force_refresh=False):
     """スケジュールページを取得しキャッシュ"""
     cache_file = os.path.join(CACHE_DIR, "schedule_current.html")
+    start_time = time.time()  # 処理時間の計測開始
     
-    # キャッシュが有効な場合はキャッシュを返す
-    if not force_refresh and os.path.exists(cache_file) and \
-       (time.time() - os.path.getmtime(cache_file) < 3600):
-        try:
-            with open(cache_file, "r", encoding="utf-8") as f:
-                return f.read()
-        except Exception as e:
-            print(f"キャッシュファイルの読み込みエラー: {str(e)}")
-    
-    # Seleniumの設定
-    options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-
     try:
+        # force_refreshがTrueの場合は必ず再取得
+        if force_refresh:
+            print("強制更新モードでスケジュールを取得します")
+        elif os.path.exists(cache_file) and (time.time() - os.path.getmtime(cache_file) < 3600):
+            print("有効なキャッシュを使用します")
+            with open(cache_file, "r", encoding="utf-8") as f:
+                return {
+                    'content': f.read(),
+                    'processing_time': time.time() - start_time
+                }
+        
+        # Seleniumの処理開始時間
+        selenium_start = time.time()
+        
+        # Seleniumの設定
+        options = Options()
+        options.add_argument("--headless")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+
         service = Service(CHROME_DRIVER_PATH)
         driver = webdriver.Chrome(service=service, options=options)
         
         # ログインページにアクセス
+        login_start = time.time()
         driver.get(LOGIN_URL)
         time.sleep(2)
 
@@ -54,16 +72,17 @@ def fetch_schedule(force_refresh=False):
         driver.find_element(By.NAME, "username").send_keys(USERNAME)
         driver.find_element(By.NAME, "password").send_keys(PASSWORD)
         driver.find_element(By.NAME, "password").submit()
+        print(f"[処理時間] ログイン処理: {time.time() - login_start:.2f}秒")
 
         time.sleep(3)  # ログイン完了を待つ
 
-        # 今月の日付を計算してURLを生成
+        # スケジュールページにアクセス
+        schedule_start = time.time()
         target_date = datetime.now()
         schedule_url = f"{CYBOZU_URL}?page=ScheduleUserMonth#date=da.{target_date.year}.{target_date.month:02d}.01"
-        
-        # スケジュールページにアクセス
         driver.get(schedule_url)
         time.sleep(3)
+        print(f"[処理時間] スケジュールページ取得: {time.time() - schedule_start:.2f}秒")
 
         # ページソースを取得
         html_content = driver.page_source
@@ -72,17 +91,27 @@ def fetch_schedule(force_refresh=False):
             raise Exception("ページの内容が空です")
 
         # キャッシュに保存
-        try:
-            os.makedirs(os.path.dirname(cache_file), exist_ok=True)
-            with open(cache_file, "w", encoding="utf-8") as f:
-                f.write(html_content)
-        except Exception as e:
-            print(f"キャッシュファイルの書き込みエラー: {str(e)}")
+        cache_start = time.time()
+        os.makedirs(os.path.dirname(cache_file), exist_ok=True)
+        with open(cache_file, "w", encoding="utf-8") as f:
+            f.write(html_content)
+        print(f"[処理時間] キャッシュ保存: {time.time() - cache_start:.2f}秒")
+        print(f"[処理時間] Selenium全体: {time.time() - selenium_start:.2f}秒")
 
-        return html_content
+        return {
+            'content': html_content,
+            'processing_time': time.time() - start_time
+        }
 
     except Exception as e:
         print(f"スケジュール取得エラー: {str(e)}")
+        if os.path.exists(cache_file):
+            print("エラーが発生したため、古いキャッシュを使用します")
+            with open(cache_file, "r", encoding="utf-8") as f:
+                return {
+                    'content': f.read(),
+                    'processing_time': time.time() - start_time
+                }
         return None
 
     finally:

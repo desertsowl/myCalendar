@@ -63,58 +63,47 @@ def get_name_list():
 @app.route("/")
 def index():
     """メインページ"""
-    # デフォルトは当月
-    month_offset = request.args.get("month_offset", 0, type=int)
-    
-    # 現在の日付を取得
-    today = datetime.now()
-    
-    # 月のオプション用のデータを作成
-    months = []
-    for offset in [-1, 0, 1]:
-        target_date = today + relativedelta(months=offset)
-        months.append({
-            'value': offset,
-            'label': target_date.strftime('%Y/%m'),
-            'selected': offset == month_offset
-        })
+    try:
+        # デフォルトは当月
+        month_offset = request.args.get("month_offset", 0, type=int)
+        
+        # 現在の日付を取得
+        today = datetime.now()
+        
+        # 月のオプション用のデータを作成
+        months = []
+        for offset in [-1, 0, 1]:
+            target_date = today + relativedelta(months=offset)
+            months.append({
+                'value': offset,
+                'label': target_date.strftime('%Y/%m'),
+                'selected': offset == month_offset
+            })
 
-    # member.txtから名前リストを取得
-    name_list = get_name_list()
+        # member.txtから名前リストを取得
+        name_list = get_name_list()
 
-    # 常に今月のデータを取得
-    html = fetch_schedule()  # month_offsetは使用しない
-    if not html:
-        return "スケジュールデータを取得できませんでした。", 500
-    
-    schedule_data = parse_schedule(html)
-    
-    # 選択された月のデータのみをフィルタリング
-    target_date = today + relativedelta(months=month_offset)
-    target_year_month = f"{target_date.year}.{target_date.month:02d}"
-    
-    filtered_data = [
-        item for item in schedule_data
-        if item['date'].startswith(target_year_month)
-    ]
-    
-    # 日付でグループ化
-    grouped_schedule = {}
-    for item in filtered_data:
-        date = item['date']
-        if date not in grouped_schedule:
-            grouped_schedule[date] = []
-        grouped_schedule[date].append({
-            'time': item['time'],
-            'title': item['title']
-        })
-    
-    return render_template(
-        "index.html", 
-        schedule_data=grouped_schedule, 
-        name_list=name_list, 
-        months=months
-    )
+        # スケジュールデータの取得
+        result = fetch_schedule()
+        if not result:
+            raise Exception("スケジュールデータの取得に失敗しました")
+
+        schedule_data = parse_schedule(result['content'])  # contentを渡す
+        
+        return render_template(
+            "index.html", 
+            schedule_data=schedule_data, 
+            name_list=name_list, 
+            months=months
+        )
+    except Exception as e:
+        print(f"Error in index route: {str(e)}")
+        return render_template(
+            "index.html",
+            error_message="スケジュールデータの取得に失敗しました。しばらく待ってから再試行してください。",
+            name_list=get_name_list(),
+            months=months
+        )
 
 @app.route("/api/schedule")
 def get_filtered_schedule():
@@ -122,11 +111,12 @@ def get_filtered_schedule():
     name = request.args.get("name", "")
     month_offset = request.args.get("month_offset", 0, type=int)
     
-    # 今月のデータのみを取得
-    html = fetch_schedule()  # month_offsetは使用しない
-    if not html:
+    # スケジュールデータの取得
+    result = fetch_schedule()
+    if not result:
         return jsonify({"error": "データを取得できませんでした"}), 500
     
+    html = result['content']  # コンテンツを取得
     schedule_data = parse_schedule(html)
     
     # 名前でフィルタリング
@@ -189,10 +179,15 @@ def get_filtered_schedule():
 def refresh_cache():
     """スケジュールのキャッシュを強制的に更新"""
     try:
-        html = fetch_schedule(force_refresh=True)
-        if not html:
+        result = fetch_schedule(force_refresh=True)
+        if not result:
             return jsonify({"error": "データを取得できませんでした"}), 500
-        return jsonify({"success": True})
+        
+        return jsonify({
+            "success": True,
+            "processing_time": result['processing_time']
+        })
+        
     except Exception as e:
         print(f"キャッシュ更新エラー: {str(e)}")
         return jsonify({"error": str(e)}), 500
