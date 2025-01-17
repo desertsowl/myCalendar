@@ -122,6 +122,17 @@
             padding: 5px 15px;
             font-size: 0.9rem;
         }
+
+        .event-row {
+            margin-bottom: 10px;
+        }
+        .time {
+            font-weight: bold;
+        }
+        .names {
+            margin-left: 20px;
+            line-height: 1.5;
+        }
     </style>
 </head>
 
@@ -185,6 +196,8 @@
 
     <!-- JavaScript -->
     <script>
+        const nameList = {{ name_list | tojson }};
+
         document.getElementById('drawerButton').addEventListener('click', function () {
             const drawerMenu = document.getElementById('drawerMenu');
             drawerMenu.style.display = drawerMenu.style.display === 'block' ? 'none' : 'block';
@@ -246,7 +259,11 @@
                                             ${events.map(event => `
                                                 <div class="event-row">
                                                     <span class="time">${event.time}</span>
-                                                    <span class="title">${event.title}</span>
+                                                    <div class="names">
+                                                        ${event.title.split(' ').map(name => `
+                                                            <div>${name}</div>
+                                                        `).join('')}
+                                                    </div>
                                                 </div>
                                             `).join('')}
                                         </div>

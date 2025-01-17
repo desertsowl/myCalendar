@@ -88,12 +88,12 @@ def index():
         if not result:
             raise Exception("スケジュールデータの取得に失敗しました")
 
-        schedule_data = parse_schedule(result['content'])  # contentを渡す
+        schedule_data = parse_schedule(result['content'])
         
         return render_template(
             "index.html", 
             schedule_data=schedule_data, 
-            name_list=name_list, 
+            name_list=name_list,
             months=months
         )
     except Exception as e:
