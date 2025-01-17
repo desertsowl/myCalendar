@@ -47,6 +47,15 @@ def parse_schedule(html):
     
     return schedule_data
 
+def get_name_list():
+    """member.txtから名前リストを読み込む"""
+    try:
+        with open("./member.txt", "r", encoding="utf-8") as f:
+            return [line.strip() for line in f if line.strip()]
+    except FileNotFoundError:
+        print("Warning: member.txt が見つかりません")
+        return []
+
 @app.route("/")
 def index():
     """メインページ"""
@@ -66,9 +75,8 @@ def index():
             'selected': offset == month_offset
         })
 
-    # Nameセレクタ用の名前リストを定義
-    name_list = ["三島","三輪","伊藤","保田","原田","坂之下","安田","小澤","山口","岡本",
-                 "早川","松本","松村","植松","横山","渋谷","百瀬","緒方","菊池","青井","黒田"]
+    # member.txtから名前リストを取得
+    name_list = get_name_list()
 
     # 常に今月のデータを取得
     html = fetch_schedule()  # month_offsetは使用しない
