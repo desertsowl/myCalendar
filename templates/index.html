@@ -145,7 +145,7 @@
                 <div class="d-flex align-items-center">
                     <h2 class="mb-0">スケジュール</h2>
                     <span class="processing-info">
-                        (更新:<span id="processingTime">-.-</span>秒 / <span id="cacheAge">-</span>前)
+                        (処理:<span id="processingTime">-.-</span>秒 / 取得:<span id="cacheAge">-</span>前)
                     </span>
                 </div>
                 <button id="refreshButton" class="btn btn-outline-primary refresh-button">
@@ -207,9 +207,10 @@
                     const response = await fetch(`/api/schedule?name=${encodeURIComponent(name)}&month_offset=${monthOffset}`);
                     const responseData = await response.json();
                     
-                    // 処理時間を計算して表示
-                    const processingTime = ((performance.now() - startTime) / 1000).toFixed(2);
-                    processingTimeEl.textContent = processingTime;
+                    // Selenium処理時間を表示
+                    if (responseData.selenium_time !== undefined) {
+                        processingTimeEl.textContent = responseData.selenium_time.toFixed(2);
+                    }
                     
                     // キャッシュの経過時間を取得して表示
                     if (responseData.cache_age) {
@@ -266,15 +267,22 @@
             // 更新ボタンのクリックイベント
             document.getElementById('refreshButton').addEventListener('click', async function() {
                 try {
-                    this.disabled = true;  // ボタンを無効化
+                    this.disabled = true;
                     this.innerHTML = '<i class="bi bi-arrow-clockwise"></i> 更新中...';
                     
-                    // キャッシュの再取得
                     const response = await fetch('/refresh_cache');
+                    const data = await response.json();
+                    
                     if (!response.ok) {
                         throw new Error('キャッシュの更新に失敗しました');
                     }
-                    // ページをリロード
+                    
+                    // Selenium処理時間を更新
+                    if (data.selenium_time) {
+                        document.getElementById('processingTime').textContent = 
+                            data.selenium_time.toFixed(2);
+                    }
+                    
                     window.location.reload();
                 } catch (error) {
                     alert(error.message);

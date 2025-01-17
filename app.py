@@ -116,7 +116,7 @@ def get_filtered_schedule():
     if not result:
         return jsonify({"error": "データを取得できませんでした"}), 500
     
-    html = result['content']  # コンテンツを取得
+    html = result['content']
     schedule_data = parse_schedule(html)
     
     # 名前でフィルタリング
@@ -170,7 +170,8 @@ def get_filtered_schedule():
     
     response_data = {
         'data': sorted_schedule,
-        'cache_age': cache_age
+        'cache_age': cache_age,
+        'selenium_time': result.get('selenium_time', 0)  # Selenium全体の処理時間を追加
     }
     
     return jsonify(response_data)
@@ -185,7 +186,7 @@ def refresh_cache():
         
         return jsonify({
             "success": True,
-            "processing_time": result['processing_time']
+            "selenium_time": result['selenium_time']  # Selenium全体の処理時間
         })
         
     except Exception as e:

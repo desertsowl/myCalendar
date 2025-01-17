@@ -36,7 +36,8 @@ def measure_time(func):
 def fetch_schedule(force_refresh=False):
     """スケジュールページを取得しキャッシュ"""
     cache_file = os.path.join(CACHE_DIR, "schedule_current.html")
-    start_time = time.time()  # 処理時間の計測開始
+    time_file = os.path.join(CACHE_DIR, "processing_time.txt")
+    selenium_start = time.time()
     
     try:
         # force_refreshがTrueの場合は必ず再取得
@@ -45,10 +46,16 @@ def fetch_schedule(force_refresh=False):
         elif os.path.exists(cache_file) and (time.time() - os.path.getmtime(cache_file) < 3600):
             print("有効なキャッシュを使用します")
             with open(cache_file, "r", encoding="utf-8") as f:
-                return {
-                    'content': f.read(),
-                    'processing_time': time.time() - start_time
-                }
+                content = f.read()
+            # 保存された処理時間を読み込む
+            selenium_time = 0
+            if os.path.exists(time_file):
+                with open(time_file, "r") as f:
+                    selenium_time = float(f.read().strip())
+            return {
+                'content': content,
+                'selenium_time': selenium_time
+            }
         
         # Seleniumの処理開始時間
         selenium_start = time.time()
@@ -90,17 +97,22 @@ def fetch_schedule(force_refresh=False):
         if not html_content:
             raise Exception("ページの内容が空です")
 
+        selenium_time = time.time() - selenium_start
+        print(f"[処理時間] Selenium全体: {selenium_time:.2f}秒")
+
         # キャッシュに保存
-        cache_start = time.time()
         os.makedirs(os.path.dirname(cache_file), exist_ok=True)
         with open(cache_file, "w", encoding="utf-8") as f:
             f.write(html_content)
-        print(f"[処理時間] キャッシュ保存: {time.time() - cache_start:.2f}秒")
-        print(f"[処理時間] Selenium全体: {time.time() - selenium_start:.2f}秒")
+            
+        # 処理時間を保存
+        if force_refresh:  # 強制更新時のみ処理時間を保存
+            with open(time_file, "w") as f:
+                f.write(str(selenium_time))
 
         return {
             'content': html_content,
-            'processing_time': time.time() - start_time
+            'selenium_time': selenium_time
         }
 
     except Exception as e:
@@ -108,10 +120,16 @@ def fetch_schedule(force_refresh=False):
         if os.path.exists(cache_file):
             print("エラーが発生したため、古いキャッシュを使用します")
             with open(cache_file, "r", encoding="utf-8") as f:
-                return {
-                    'content': f.read(),
-                    'processing_time': time.time() - start_time
-                }
+                content = f.read()
+            # 保存された処理時間を読み込む
+            selenium_time = 0
+            if os.path.exists(time_file):
+                with open(time_file, "r") as f:
+                    selenium_time = float(f.read().strip())
+            return {
+                'content': content,
+                'selenium_time': selenium_time
+            }
         return None
 
     finally:
