@@ -163,9 +163,12 @@ def get_filtered_schedule():
             'title': item['title']
         })
     
-    # 日付順にソート（年.月.日の形式で数値としてソート）
-    sorted_schedule = dict(sorted(grouped_schedule.items(), 
-        key=lambda x: [int(n) for n in x[0].split('.')]))
+    # 日付順にソート（年、月、日を個別に数値として扱う）
+    def date_sort_key(date_str):
+        year, month, day = map(int, date_str.split('.'))
+        return (year, month, day)  # タプルで返すことで自然な順序付けを実現
+
+    sorted_schedule = dict(sorted(grouped_schedule.items(), key=lambda x: date_sort_key(x[0])))
     
     return jsonify(sorted_schedule)
 

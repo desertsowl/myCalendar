@@ -182,13 +182,19 @@
                     
                     // スケジュールの表示を更新
                     let html = '';
-                    const entries = Object.entries(data);
                     
-                    if (entries.length === 0) {
-                        html = '<div class="no-data">該当する月のスケジュールはありません</div>';
-                    } else {
-                        // 日付でソート
-                        entries.sort(([dateA], [dateB]) => dateA.localeCompare(dateB));
+                    if (Object.keys(data).length > 0) {
+                        const entries = Object.entries(data);
+                        
+                        // 日付でソート（年、月、日を数値として比較）
+                        entries.sort(([dateA], [dateB]) => {
+                            const [yearA, monthA, dayA] = dateA.split('.').map(Number);
+                            const [yearB, monthB, dayB] = dateB.split('.').map(Number);
+                            
+                            if (yearA !== yearB) return yearA - yearB;
+                            if (monthA !== monthB) return monthA - monthB;
+                            return dayA - dayB;
+                        });
                         
                         for (const [date, events] of entries) {
                             html += `
